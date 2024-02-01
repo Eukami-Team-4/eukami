@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>AudiophileCopy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    header{
+
+      background-color: #0C233B;
+      height: 105px;
+      margin-bottom: 30px;
+
+    }
+    .flexBox{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      height: 105px;
+      align-items: center;
+
+    }
+
+    .left-section{
+      flex:1;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #E9ECEF;
+      font-family:manrope;
+      font-weight: bold;
+      font-size:xx-large;
+    
+    }
+
+    .logo{
+      height: 40px;
+      width:100%;
+      object-fit: contain;
+      margin:150px;
+
+    }
+
+    .mid-section{
+      height: 100%;
+      flex:1;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .mid-section > div{
+      display: flex;
+      flex:1;
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+      height: 60%;
+      color:#E9ECEF;
+      font-family: manrope;
+      font-size: 15px;
+      font-weight: bold;
+      transition: all 0.15s;
+
+    }
+
+
+    .mid-section > div:hover{
+
+    
+
+      background-color: #E9ECEF;
+      color: #23405E;
+   
+
+    }
+
+    .right-section{
+      height: 100%;
+      flex:1;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-image{
+      height: 30px;
+      margin-left: 390px;
+      position: relative
+    }
+
+    #cart-notification{
+      color:#343A40;
+      background-color: #E9ECEF;
+      height: 15px; width: 15px;
+      font-size: 14px; font-family: Manrope;
+      text-align: center; vertical-align:top;
+      padding-bottom: px;
+      border-radius: 90px;
+      position: absolute;
+      left: 415px;
+      top:0px;
+    }
+
+    #cart-number{
+      position: absolute; 
+      right: 3.5px; 
+      top: -2px; 
+    }
+
+    .cart-image:hover{
+      opacity: 0.75;
+      cursor: pointer;
+    }
+
+    body{
+      margin: 0;
+      background-color:#F8F9FA;
+    }
+
+
+    .back{
+      margin-left: 150px;
+      font-family: manrope, arial;
+      color: #8b8d8f;
+      font-weight: medium;
+      font-size: 15px;
+      line-height: 25px;
+      margin-bottom: 50px;
+    }
+
+    .back-button{
+      display: inline-block;
+    }
+
+    .back-button:hover{
+      cursor: pointer;
+    }
+    #container1{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    #container1 > div{
+    
+      height: 500px;
+      
+    }
+
+    h2{
+      margin: 0;
+    }
+
+    #headphone1{
+      object-fit: contain;
+     height: 100%;
+     width:auto;
+     border-radius: 10px;
+     margin-left: 150px;
+    }
+    #newProduct{
+      color: #F8C361;
+      font-family: Manrope, Arial;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 19px;
+      letter-spacing: 10px;
+      margin-left: 100px;
+      margin-bottom: 20px;
+    }
+
+    .productName{
+      font-family: Manrope, Arial;
+      font-weight: Bold;
+      font-size: 40px;
+      line-height: 44px;
+      margin-left: 100px;
+      letter-spacing: 1.5px;
+      margin-bottom: 35px;
+    }
+    .bodyText{
+      font-family: manrope;
+      color: #8b8d8f;
+      font-weight: medium;
+      font-size: 15px;
+      
+      
+    }
+
+  #productInfo{
+      line-height: 25px;
+      margin-left: 100px;
+
+    }
+    .price{
+      font-family: manrope, Arial;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 33px;
+      margin-left: 100px;
+      letter-spacing: 1.7px;
+
+    }
+
+    .quantity-cart{
+      display:grid;
+      grid-template-columns: 105px 160px;
+      column-gap: 25px;
+      margin-left: 100px;
+
+    }
+    
+    .cart{
+      background-color: #F8C361;
+      color: #F8F9FA;
+      font-family:manrope, Arial ;
+      font-weight: bold;
+      width: 160px;
+      height: 45px;
+      padding: 2%;
+      border: none;
+      transition: opacity 0.15s;
+
+    }
+
+    .cart:hover{
+      opacity: 60%;
+      cursor: pointer;
+
+
+    }
+
+    .minus{
+      background-color: #E9ECEF;
+      color: #616467;
+      border: none;
+      width: 35px;
+      padding: 2%;
+      font-family: Manrope, Arial;
+      font-family: bold;
+    }
+
+    .plus{
+      background-color: #E9ECEF;
+      color: #616467;
+      border: none;
+      width: 35px;
+      padding: 2%;
+      font-family: Manrope, Arial;
+      font-family: bold;
+    }
+    .minus:hover{
+      opacity: 0.7;
+      cursor: pointer;
+    }
+
+    .plus:hover{
+      opacity: 0.7;
+      cursor: pointer;
+
+    }
+    input[type=text]{
+      background-color: #E9ECEF;
+      border: none;
+      width: 35px;
+      padding: 2%;
+      text-align: center;
+      font-family: manrope;
+      font-weight: bold;
+
+
+    }
+    .quantity-bar{
+      display: grid;
+      grid-template-columns: 35px 36.5px 35px;
+    }
+
+    .container2{
+      margin-top: 100px;
+      display: grid;
+      grid-template-columns: 60% 40%;
+    }
+
+    .h3{
+      font-family: Manrope, Arial;
+      font-weight: Bold;
+      font-size: 32px;
+      line-height: 36px;
+      letter-spacing: 1.15px;
+      margin-bottom: 35px;
+
+    }
+
+    #feature-text{
+      margin-left: 150px;
+    }
+    .specs{
+      color: #F8C361;
+    }
+
+    .container3{
+      display: grid;
+      max-width: 1280px;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 100px;
+      column-gap: 33px;
+    }
+    .image-container{
+      height: 400px;
+      width: 500px;
+      margin-left: 150px;
+      position: relative;
+    }
+    .ph1{
+      height: 84.8%;
+      width: auto;
+      object-fit:contain;
+      border-radius: 5px;
+      position:absolute;
+      top:62px;
+     
+
+    }
+
+    .ph1Image-container{
+      position: relative;
+    }
+
+    .hp2{
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      position: absolute;
+      top: 20px;
+      border-radius: 3px;
+    }
+
+    .hp3{
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      position: absolute;
+      bottom: 20px;
+      border-radius: 3px;
+    }
+    .container4{
+      margin-top: 100px;
+    }
+
+    #span-text{
+      color: #F8C361;
+    }
+
+    #subtitle{
+      margin-left: 600px;
+    }
+
+    .container5{
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: 400px 400px 400px;
+      margin-left: 150px;
+      column-gap: 33px;
+    }
+
+    .c5-images{
+      height: 400px;
+      width: 400px;
+      object-fit: contain;
+    }
+
+    #hp4{
+      width: 100%;
+      
+    }
+    #hp4-name{
+      margin-top: 30px;
+      margin-left: 125px;
+    }
+    #hp5-name{
+      margin-top: 30px;
+      margin-left: 165px;
+    }
+    #hp6-name{
+      margin-top: 30px;
+      margin-left: 101px;
+    }
+    #hp4{
+      margin-top: px;
+      margin-left: 0px;
+    } 
+    .h4{
+      font-family: manrope;
+      color: #343A40;
+      font-weight: bold;
+      font-size: 28px;
+      line-height: 38px;
+      letter-spacing: 2px;
+    }
+    #product-button{
+      margin-top: 30px;
+      margin-left:125px;
+      text-align: center;
+      background-color: #F8C361;
+      color: #F8F9FA;
+      font-family:manrope, Arial ;
+      font-weight: bold;
+      width: 160px;
+      height: 45px;
+      border: none;
+      transition: opacity 0.15s;
+    }
+
+    #product-button:hover{
+      opacity: 60%;
+      cursor: pointer;
+    }
+
+    
+    .containerU{
+      margin-top: 190px;
+      display: grid;
+      grid-template-columns: 400px 400px 400px;
+      margin-left: 150px;
+      column-gap: 33px;
+    }
+
+
+    .container6{
+      display: grid;
+      grid-template-columns: auto auto;
+      max-width: 1280px;
+      margin-left: 150px;
+      margin-top: 190px;
+      column-gap: 55px;
+      margin-bottom: 150px;
+    }
+    .h2{
+      font-family: Manrope, Arial;
+      color: #343A40;
+      font-weight: Bold;
+      font-size: 40px;
+      line-height: 44px;
+      letter-spacing: 1.5px;
+      margin-bottom: 35px;
+    }
+
+    .c6-left{
+       padding-top: 20%;
+       width: 100%;
+       height: 100%;
+       
+
+    }
+    .c6-right{
+      width: 100%;
+      height: 100%;
+      min-height: 800px;
+      min-width: 650px;
+
+    }
+    .hp10{
+      height:100%;
+      width: 100%;
+      
+      object-fit: contain;
+      border-radius: 10px;
+      overflow: auto;
+
+    }
+    footer{
+      background-color: #0C233B;
+      height: 350px;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+    .container7{
+      height: 100%;
+      display:grid;
+      grid-template-columns: auto auto;
+      margin-left: 150px;
+    }
+
+    .c7-left{
+
+    }
+    .f-logo-container{
+      margin-top: 80px;
+      color: #E9ECEF;
+      font-family:manrope;
+      font-weight: bold;
+      font-size:xx-large;
+    
+      
+    }
+    .f-logo{
+      width: 149px;
+    }
+    .f-text{
+      font-family: manrope;
+      color: #8b8d8f;
+      font-weight: regular;
+      font-size: 15px;
+      margin-top: 30px;
+
+    }
+    .f-menu{
+      width:555px;
+      margin-top: 55px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .f-menu-text{
+      font-family: manrope;
+      color:#E9ECEF;
+      font-weight: bold;
+      font-size: 15px;
+      margin-top: 30px;
+
+    }
+    .pictograms{
+      width: 100px;
+      margin-left: 432px;
+      margin-top: 100px;
+    }
+    #f-menu-buttons{
+      display: flex;
+      flex:1;
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+      height: 50px;
+      color:#E9ECEF;
+      font-family: manrope;
+      font-size: 15px;
+      font-weight: bold;
+      transition: all 0.15s;
+    }
+    #f-menu-buttons:hover{
+
+    
+
+background-color: #E9ECEF;
+color: #212529;
+
+
+}
+
+#u1{
+ 
+  height:100%;
+  width: 100%;
+  max-height:100%; max-width:100%;
+  object-fit: contain;
+}
+#u2{
+
+  
+  float: none;
+  vertical-align:baseline;
+  margin-top: 2%;
+  height:98%;
+  width: 100%;
+  max-height:100%; max-width:100%;
+  object-fit: contain;
+  
+}
+#u3{
+  margin-top: 4%;
+  height:96%;
+  width: 100%;
+  object-fit: contain;
+}
+
+footer{
+  margin-bottom: 0px;
+}
+
+  
+  </style>
+ 
+</head>
+<body>
+
+  <header>
+    <div class="flexBox">
+
+      <div class="left-section">EUKAMI</div>
+      <div class="mid-section">
+        <div>HOME</div>
+        <div>HEADPHONES</div>
+        <div>SPEAKERS</div>
+        <div>EARPHONES</div>
+
+      </div>
+      <div class="right-section">
+        <div style="position: relative;">
+          <img title = "Cart" class="cart-image" src="Images/cart-image.png ">
+          <div id="cart-notification">
+            <span id="cart-number">3 </span> 
+          </div>
+       </div>
+      </div>
+    
+    </div>
+  </header>
+
+  <main>
+
+    <div class="back"> <div class="back-button">Go Back</div></div>
+
+    <div id="container1">
+
+      <div> <img src="Images/headphone.png" id="headphone1"></div>
+
+      <div class="prouctDetailDiv">
+        <div id="newProduct"> NEW PRODUCT</div>
+        <div id="row2"> <h2 class="productName">X99 MARK II <br> HEADPHONES</h2></div>
+        <div> <p id="productInfo" class="bodyText"> The new XX99 Mark II headphones is the pinnicale of pristine <br> audio. It redefines your premium headphone experience by <br> reproducing the balance depth and precision of studio-quality <br> sound.</p></div>
+        <div><h4 class="price">$2,999</h4></div>
+        <div class="quantity-cart"> <!--row add to cart and quantity-->
+
+          <div class="quantity-bar"> <!--for the quantity-->
+            <button title = "remove" class="minus" onclick="remove()">-</button>
+            <input type="text" id="quantity" name="quantity"value="1" min="1" max="99">
+            <button title = "add" class="plus" onclick="add()">+</button>
+          </div>
+         
+          <div> <!--quantity button-->
+            <button class="cart">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container2">
+
+      <div>
+        <p class="h3" id="feature-text" >FEATURES</p>
+        <p id="feature-text" class="bodyText"> Featuring a genuine leather head strap and premium earcups, these headphones deliver <br> superior comfort for thse who like to enjoy endless listening. It includes intuitive controls <br> desgined for any situation. Whether you're taking a business call or just in your own <br> personal space, the auto on.off and pause features ensure that you'll never miss a beat.</p>
+        <p id="feature-text" class="bodyText"> The advanced Active Noise Cancellation with built-in equalizer allow you to experience <br> your audio wordl on your terms. It lets you enjoy your audio in peace, but quickly interact <br> with your surroundings when you need to. Combined with Bluetooth 5.0 compliant <br> conncextivity and 17 hour bountery life, the XX99 MARK II headphones give you superior <br> sound, cutting-edge technology, and a modern design.</p>
+      </div>
+
+      <div>
+        <h3 class="h3">IN THE BOX</h3>
+        <p class="bodyText"><span class="specs">1x</span> &nbsp; &nbsp; Headphone Unit</p>
+        <p class="bodyText"><span class="specs">2x</span> &nbsp; &nbsp; Replacement Earcups</p>
+        <p class="bodyText"><span class="specs">1x</span> &nbsp; &nbsp; UserManual</p>
+        <p class="bodyText"><span class="specs">1x</span> &nbsp; &nbsp; 3.5mm 5m Audio Cable</p>
+        <p class="bodyText"><span class="specs">1x</span> &nbsp; &nbsp; TravelBag</p>
+    
+      </div>
+
+    </div>
+
+    <div class="container3">
+
+      <div>
+        <div class="image-container"> <img class="hp2" src="Images/hp2.png" > </div>
+        <div class="image-container"> <img class="hp3" src="Images/hp3.png"> </div>
+      </div>
+      <div class="ph1Image-container">
+        <img class="ph1"src="Images/hp1.png">
+
+      </div>
+
+    </div>
+
+    <div class="container4">
+      <p class="h3" id="subtitle" >YOU MAY ALSO LIKE</p>
+
+    </div>
+
+    <div class="container5">
+      
+      <div>
+        <div id="hp4"> <img class="c5-images" src="Images/hp4.png"></div>
+        <div class="h4"id="hp4-name"> XX99 MARK I<Img:sizes></Img:sizes></div>
+        <button id="product-button"> SEE PRODUCT</button>
+      </div>
+
+      <div >
+        <div id="hp4"> <img class="c5-images" src="Images/hp5.png"></div>
+        <div class="h4"id="hp5-name"> XX59 <Img:sizes></Img:sizes></div>
+        <button id="product-button"> SEE PRODUCT</button>
+      </div>
+
+      
+      <div >
+        <div id="hp4"> <img class="c5-images" src="Images/hp6.png"></div>
+        <div class="h4"id="hp6-name"> ZX9 SPEAKER <Img:sizes></Img:sizes></div>
+        <button id="product-button"> SEE PRODUCT</button>
+      </div>
+
+
+  
+    </div>
+
+    <div class="containerU">
+      
+      <div id="hp4">
+        <img class="c5-images" id="u1" src="Images/hp7.png">
+    
+      </div>
+
+      <div id="hp4" >
+         <img class="c5-images" id="u2"  src="Images/hp8.png">
+      </div>
+
+      
+      <div id="hp4">
+        <img class="c5-images" id="u3"  src="Images/hp9.png">
+       
+      </div>
+
+
+  
+    </div>
+
+
+    <div class="container6">
+      <div class="c6-left " >
+        <h1 class="h2"> BRINGING YOU THE <br> <span id="span-text"> BEST </span> AUDIO GEAR</h1>
+        <p class="bodyText">Located at the heart of New York City, Audiophile is the premier <br> store for high end headphones, earphones, speakers and audio <br> accessories. We have a large showroom and luxury <br> demonstration rooms available for you to browse and <br> experience a range of our products. Stop by our store to <br> meet some of the fantastic people who make Audiophile the <br> best place to buy your portable audio equipment.</be>  </p>
+      </div>
+      <div  class="c6-right"> <img src="Images/hp10.png" class="hp10"></div>
+
+    </div>
+
+
+  </main>
+
+  <footer>
+    <div class="container7">
+      <div class="c7-left">
+        <div class="f-logo-container">EUKAMI</div>
+        <div class="f-text"> Eukami is all in one stop to fulfill your audio needs. We're a small team <br> of music lovers and sound specalists who are devoted to helping you get the <br> most out of personal audio. Come and Vist our demo facility - we're open 7 <br> days a week.</div>
+        <div class="f-text"> <b>Copyright 2021. All Rights Reserved</b></div>
+      </div>
+     <div class="c7-right">
+      <div class="f-menu">
+
+        <div id="f-menu-buttons" class="f-menu-text">HOME</div>
+        <div id="f-menu-buttons" class="f-menu-text">HEADPHONES</div>
+        <div id="f-menu-buttons" class="f-menu-text">SPEAKERS</div>
+        <div id="f-menu-buttons" class="f-menu-text">EARPHONES</div>
+      </div>
+      <div>
+        <img class="pictograms" src="Images/links.png">
+      </div>
+     </div>
+
+    </div>
+
+  </footer>
+
+  <script src="product-page.js"></script>
+  
+</body>
+</html>
