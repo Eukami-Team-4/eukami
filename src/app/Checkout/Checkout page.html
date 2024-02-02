@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Checkout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script/main.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+	  <div class="left-section"> <img class="logo" src="Images/Logo.png"> </div>
+	  <div class="mid-section">
+		  <div>HOME</div>
+		  <div>HEADPHONES</div>
+		  <div>SPEAKERS</div>
+		  <div>EARPHONES</div>
+	  </div>
+	  <div class="right-section">
+		  <div>
+			  <img class="cart-image" src="Images/Cart.png ">
+			</div>
+	  </div>
+  </header>
+
+  <main-content>
+    <div class="go-back-container">
+        <div class="go-back-button">Go Back</div>
+    </div>
+
+    <div class="checkout-and-summary">
+      <div class="checkout-container">
+          <h2>CHECKOUT</h2>
+
+          <div class="billing-details">
+            <h4>BILLING DETAILS</h4>
+            <div class="input-group">
+              <div class="input-wrapper">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="John Smith">
+              </div>
+              <div class="input-wrapper">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="johnsmith@email.com">
+              </div>
+            </div>
+            <div class="input-group">
+              <div class="input-wrapper">
+                <label for="phone-number">Phone Number</label>
+                <input type="text" id="phone-number" name="Phone Number" placeholder="07579118190">
+              </div>
+            </div>
+          </div>
+          
+          <div class="shipping-info">
+            <h4>SHIPPING INFO</h4>
+            
+          
+            <div class="input-group full-width">
+              <label for="address">Address</label>
+              <input type="text" id="address" name="address" placeholder="10 Downing Street">
+            </div>
+          
+           
+            <div class="input-group">
+              <div class="input-wrapper">
+                <label for="zip-code">ZIP Code</label>
+                <input type="text" id="zip-code" name="ZIP Code" placeholder="B47ET">
+              </div>
+              <div class="input-wrapper">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" placeholder="Birmingham">
+              </div>
+            </div>
+            
+            <div class="input-group">
+              <div class="input-wrapper">
+                <label for="country">Country</label>
+                <input type="text" id="country" name="country" placeholder="England">
+              </div>
+            </div>
+          </div>
+          
+          
+          <div class="payment-details">
+            <h4>PAYMENT DETAILS</h4>
+            <div class="payment-details-content">
+                <div class="payment-inputs">
+                    <!-- e-Money Details -->
+                    <div id="eMoneyDetails" class="payment-detail">
+                        <label for="e-Money Number">e-Money Number</label>
+                        <input type="text" id="e-Money Number" name="e-Money Number" placeholder="e-Money Number">
+                        
+                        <label for="e-Money PIN">e-Money PIN</label>
+                        <input type="text" id="e-Money PIN" name="e-Money PIN" placeholder="e-Money PIN">
+                    </div>
+                    
+                    <!-- Credit Card Details (hidden initially) -->
+                    <div id="creditCardDetails" class="payment-detail" style="display: none;">
+                        <label for="cardNumber"><span class="card-number-span" style="color: rgb(12, 35, 59);">Card Number</span></label>
+                        <input type="text" id="cardNumber" name="cardNumber" placeholder="Card Number">
+                        
+                        <label for="expiryDate"><span class="expiry-date-span" style="color: rgb(12, 35, 59);">Expiry Date</span></label>
+                        <input type="text" id="expiryDate" name="expiryDate" placeholder="Expiry Date">
+                        
+                        <label for="cvv"><span class="cvv-span" style="color: rgb(12, 35, 59);">CVV</span></label>
+                        <input type="text" id="cvv" name="cvv" placeholder="CVV">
+                    </div>
+                </div>
+                
+                <div class="payment-options">
+                  <div class="radio-wrapper">
+                    <input type="radio" id="eMoney" name="paymentDetails" value="eMoney" checked>
+                    <span class="checkmark"></span>
+                    <label for="eMoney"><span class="eMoney-span" style="color: rgb(12, 35, 59);">e-Money</span></label>
+                  </div>
+                  <div class="radio-wrapper">
+                    <input type="radio" id="cashOnDelivery" name="paymentDetails" value="cashOnDelivery">
+                    <span class="checkmark"></span>
+                    <label for="cashOnDelivery"><span class="cashOnDelivery-span" style="color: rgb(12, 35, 59);">Cash On Delivery</span></label>
+                  </div>
+                  <div class="radio-wrapper">
+                    <input type="radio" id="creditCard" name="paymentDetails" value="creditCard">
+                    <span class="checkmark"></span>
+                    <label for="creditCard"><span class="creditCard-span" style="color: rgb(12, 35, 59);">Debit/Credit Card</span></label>
+                  </div>
+                </div>
+                
+            </div>
+      </div>
+        
+    </div>
+
+
+
+      <div class="summary-box-container">
+        <h3> SUMMARY</h3>
+        <div class="summary-items">
+          <div class="summary-item-1">
+            <img class="item-image" src="Images/Item_1.png" alt="Product Image">
+            <div class="item-details">
+              <p class="item-name">XX99 MK II</p>
+              <p class="item-price">£ 2,999</p>
+            </div>
+              <p class="item-quantity">x1</p>
+          </div>
+          <div class="summary-item-2">
+            <img class="item-image" src="Images/Item_2.png">
+            <div class="item-details">
+              <p class="item-name">XXS9</p>
+              <p class="item-price">£ 899</p>
+            </div>
+              <p class="item-quantity">x2</p>
+          </div>
+          <div class="summary-item-3">
+            <img class="item-image" src="Images/Item_3.png">
+            <div class="item-details">
+              <p class="item-name">YX1</p>
+              <p class="item-price">£ 599</p>
+            </div>
+            <p class="item-quantity">x1</p>
+          </div>   
+        </div>
+          <div class="summary-calc">
+            <p>TOTAL</p>
+            <p class="total-amount"><span style="color:black">£ 5,396</span></p>
+          </div>
+          <div class="summary-calc">
+            <p>SHIPPING</p>
+            <p class="total-amount"><span style="color:black">£ 50</span></p>
+          </div>
+          <div class="summary-calc">
+            <p>VAT (INCLUDED)</p>
+            <p class="total-amount"><span style="color:black">£ 1,079</span></p>
+          </div>
+          <div class="summary-calc">
+            <p>GRAND TOTAL</p>
+            <p class="total-amount"><span style="color: rgb(255, 153, 0)">£ 5,446</span></p>
+          </div>
+          <button id="checkoutButton">CONTINUE & PAY</button>
+      </div>
+    </div>
+  </main-content>
+
+  <footer>
+    <div class="containerR7" style="
+    display:grid;">
+      <div class="c7-left">
+        <div class="f-logo-container"> <img class="f-logo"src="Images/logo.png"></div>
+        <div class="f-text"> Eukami is all in one stop to fulfill your audio needs. We're a small team <br> of music lovers and sound specalists who are devoted to helping you get the <br> most out of personal audio. Come and Vist our demo facility - we're open 7 <br> days a week.</div>
+        <div class="f-text"> <b>Copyright 2021. All Rights Reserved</b></div>
+      </div>
+     <div class="c7-right">
+      <div class="f-menu">
+
+        <div id="f-menu-buttons" class="f-menu-text">HOME</div>
+        <div id="f-menu-buttons" class="f-menu-text">HEADPHONES</div>
+        <div id="f-menu-buttons" class="f-menu-text">SPEAKERS</div>
+        <div id="f-menu-buttons" class="f-menu-text">EARPHONES</div>
+      </div>
+      <div>
+        <img style=" width: 100px;
+        margin-left: 432px;
+        margin-top: 100px;" src="Images/links.png">
+      </div>
+     </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
