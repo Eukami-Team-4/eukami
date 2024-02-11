@@ -326,7 +326,7 @@ display: block;
 }
 
 /* Style the indicator (dot/circle) */
-.radio-wrapper .checkmark:after {
+.radio-wrapper input:checked + .checkmark:after {
 top: 3.2px;
 left: 2.5px;
 width: 9px;
