@@ -1,7 +1,7 @@
-import HeroImage from "@/../public/Images/hero.png";
 import StorefrontButton from "@/app/(Storefront)/components/storefront-button";
 import { UniqueSellingPoint } from "@/app/(Storefront)/components/unique-selling-point";
 import Image from "next/image";
+import HeroImage from "../../../public/images/hero.png";
 import { FeaturedCollection } from "./components/featured-collection";
 
 export default function Home({ product }) {

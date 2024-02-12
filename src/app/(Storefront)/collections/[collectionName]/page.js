@@ -1,9 +1,9 @@
-import HeroImage from "@/../public/images/hp1.png";
 import { FeaturedCollection } from "@/app/(Storefront)/components/featured-collection";
 import StorefrontButton from "@/app/(Storefront)/components/storefront-button";
 import { UniqueSellingPoint } from "@/app/(Storefront)/components/unique-selling-point";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import HeroImage from "../../../../../public/images/hp1.png";
 
 const CollectionPage = ({ params }) => {
   return (

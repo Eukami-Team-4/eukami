@@ -1,7 +1,7 @@
-import CollectionHeadphones from "@/../public/images/collection-headphones.png";
 import StorefrontButton from "@/app/(Storefront)/components/storefront-button";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
+import CollectionHeadphones from "../../../../public/images/collection-headphones.png";
 
 export const FeaturedCollection = ({params}) => {
   return (
