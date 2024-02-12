@@ -320,13 +320,9 @@ position: absolute;
 display: none;
 }
 
-/* Show the indicator (dot/circle) when the radio button is checked */
-.radio-wrapper .checkmark:after {
-display: block;
-}
-
-/* Style the indicator (dot/circle) */
+/* Show and Style the indicator (dot/circle) */
 .radio-wrapper input:checked + .checkmark:after {
+display: block;
 top: 3.2px;
 left: 2.5px;
 width: 9px;
