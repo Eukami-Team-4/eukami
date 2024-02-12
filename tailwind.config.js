@@ -1,13 +1,11 @@
 /** @type {import('tailwindcss').Config} */
-const { fontFamily } = require("tailwindcss/defaultTheme")
-
 module.exports = {
   darkMode: ["class"],
   content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    './pages/**/*.{js,jsx}',
+    './components/**/*.{js,jsx}',
+    './app/**/*.{js,jsx}',
+    './src/**/*.{js,jsx}',
   ],
   prefix: "",
   theme: {
@@ -19,9 +17,6 @@ module.exports = {
       },
     },
     extend: {
-      fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -56,6 +51,33 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        eerieBlack: {
+          DEFAULT: "hsl(var(--eerie-black))"
+        },
+        onyx: {
+          DEFAULT: "hsl(var(--onyx))"
+        },
+        indigoDye: {
+          DEFAULT: "hsl(var(--indigo-dye))"
+        },
+        steelBlue: {
+          DEFAULT: "hsl(var(--steel-blue))"
+        },
+        argentinianBlue: {
+          DEFAULT: "hsl(var(--argentinian-blue))"
+        },
+        brightOrange: {
+          DEFAULT: "hsl(var(--bright-orange))"
+        },
+        platinum: {
+          DEFAULT: "hsl(var(--platinum))"
+        },
+        antiFlashWhite: {
+          DEFAULT: "hsl(var(--anti-flash-white))"
+        },
+        seasalt: {
+          DEFAULT: "hsl(var(--seasalt))"
+        }
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -79,4 +101,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-};
+}
