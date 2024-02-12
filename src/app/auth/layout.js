@@ -1,20 +1,14 @@
-import { cn } from "@/lib/utils"
-import { fontSans } from "../(Storefront)/layout"
+import { cn } from "@/lib/utils";
 
 export const metadata = {
-  title: 'Admin Login',
-  description: 'Login to the admin dashboard.',
-}
+  title: "Admin Login",
+  description: "Login to the admin dashboard.",
+};
 
 export default function RootLayout({ children }) {
- return (
-    <html lang="en">
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
-      >{children}</body>
-    </html>
-  )
+  return (
+    <main className={cn("min-h-screen bg-background font-sans antialiased")}>
+      {children}
+    </main>
+  );
 }
