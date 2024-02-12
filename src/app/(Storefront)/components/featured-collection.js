@@ -1,7 +1,6 @@
 import StorefrontButton from "@/app/(Storefront)/components/storefront-button";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
-import CollectionHeadphones from "../../../../public/images/collection-headphones.png";
 
 export const FeaturedCollection = ({params}) => {
   return (
@@ -41,7 +40,7 @@ export const FeaturedCollection = ({params}) => {
 export const collections = [
   {
     name: "Headphones",
-    image: CollectionHeadphones,
+    image: "/images/collection-headphones.png",
   },
   {
     name: "Earphones",

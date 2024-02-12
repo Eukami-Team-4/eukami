@@ -28,14 +28,14 @@ const CollectionPage = ({ params }) => {
 const Products = [
   {
     name: "Product 1",
-    image: "../../../../../public/images/hp1.png",
+    image: "/images/hp1.png",
     description:
       "Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.",
     isFeatured: true,
   },
   {
     name: "Product 2",
-    image: "../../../../../public/images/hp1.png",
+    image: "/images/hp1.png",
     description:
       "Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.",
   },

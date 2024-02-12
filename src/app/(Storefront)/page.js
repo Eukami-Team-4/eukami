@@ -31,7 +31,7 @@ const Hero = () => {
         </div>
         <div className="items-center justify-center hidden w-4/5 lg:flex">
           <Image
-            src={"../../../public/images/hero.png"}
+            src="/images/hero.png"
             width={500}
             height={500}
             className="object-cover aspect-square"
@@ -41,7 +41,7 @@ const Hero = () => {
       </div>
       <div className="absolute inset-0 z-0 flex items-center justify-center w-full h-full aspect-square lg:hidden">
         <Image
-          src={"../../../public/images/hero.png"}
+          src="/images/hero.png"
           width={500}
           height={500}
           className="object-cover aspect-square"
