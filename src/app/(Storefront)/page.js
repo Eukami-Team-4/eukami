@@ -1,7 +1,6 @@
 import StorefrontButton from "@/app/(Storefront)/components/storefront-button";
 import { UniqueSellingPoint } from "@/app/(Storefront)/components/unique-selling-point";
 import Image from "next/image";
-import HeroImage from "../../../public/images/hero.png";
 import { FeaturedCollection } from "./components/featured-collection";
 
 export default function Home({ product }) {
@@ -32,7 +31,7 @@ const Hero = () => {
         </div>
         <div className="items-center justify-center hidden w-4/5 lg:flex">
           <Image
-            src={HeroImage}
+            src={"../../../public/images/hero.png"}
             width={500}
             height={500}
             className="object-cover aspect-square"
@@ -42,7 +41,7 @@ const Hero = () => {
       </div>
       <div className="absolute inset-0 z-0 flex items-center justify-center w-full h-full aspect-square lg:hidden">
         <Image
-          src={HeroImage}
+          src={"../../../public/images/hero.png"}
           width={500}
           height={500}
           className="object-cover aspect-square"
