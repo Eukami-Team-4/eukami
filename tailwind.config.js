@@ -51,6 +51,33 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        eerieBlack: {
+          DEFAULT: "hsl(var(--eerie-black))"
+        },
+        onyx: {
+          DEFAULT: "hsl(var(--onyx))"
+        },
+        indigoDye: {
+          DEFAULT: "hsl(var(--indigo-dye))"
+        },
+        steelBlue: {
+          DEFAULT: "hsl(var(--steel-blue))"
+        },
+        argentinianBlue: {
+          DEFAULT: "hsl(var(--argentinian-blue))"
+        },
+        brightOrange: {
+          DEFAULT: "hsl(var(--bright-orange))"
+        },
+        platinum: {
+          DEFAULT: "hsl(var(--platinum))"
+        },
+        antiFlashWhite: {
+          DEFAULT: "hsl(var(--anti-flash-white))"
+        },
+        seasalt: {
+          DEFAULT: "hsl(var(--seasalt))"
+        }
       },
       borderRadius: {
         lg: "var(--radius)",
