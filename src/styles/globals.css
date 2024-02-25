@@ -69,4 +69,10 @@
   h1 {
     @apply text-3xl font-semibold;
   }
+  h2 {
+    @apply text-xl font-medium;
+  }
+  h3 {
+    @apply font-medium;
+  }
 }

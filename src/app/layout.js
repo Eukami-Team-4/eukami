@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
             <head />
             <body
                 className={cn(
-                    "min-h-screen bg-background font-sans antialiased scroll-smooth",
+                    "min-h-screen bg-seasalt font-sans antialiased scroll-smooth",
                     inter
                 )}
             >
