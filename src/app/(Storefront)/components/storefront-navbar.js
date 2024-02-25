@@ -1,4 +1,5 @@
 "use client"
+import Cart from "@/app/(Storefront)/cart/cart";
 import MainNav from "@/app/(Storefront)/components/main-nav";
 import Logo from "@/components/logo";
 import { Menu, ShoppingCart } from "lucide-react";
@@ -24,9 +25,7 @@ export function Navbar() {
           <MainNav />
         </div>
         <div>
-          <button onClick={openCart}  className="flex items-center justify-center w-12 h-12 p-2 transition-all hover:text-brightOrange hover:-translate-y-1">
-            <ShoppingCart />
-          </button>
+          <Cart></Cart>
         </div>
       </div>
     </div>
