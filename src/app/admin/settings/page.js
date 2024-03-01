@@ -12,7 +12,7 @@ export default async function Account() {
 
   return (
     <div>
-      {/* <AccountForm user={user} /> */}
+      <AccountForm user={user} />
     </div>
   );
 }

@@ -1,12 +1,11 @@
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
-import PageWrapper from "../components/layout/page-wrapper";
 import { Button } from "@/components/ui/button";
-import { columns } from "./columns";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import PageWrapper from "../components/layout/page-wrapper";
 import { DataTable } from "../components/table/data-table";
+import { columns } from "./columns";
 
 export default async function ProductsPage() {
-  const supabase = createClientComponentClient();
+  const supabase = createServerComponentClient();
   const { data: products } = await supabase.from("products").select();
 
   return (
