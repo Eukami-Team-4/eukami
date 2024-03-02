@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
 
 export const metadata = {
-  title: "Admin Dashboard",
-  description: "Login to the admin dashboard.",
+  title: "Admin Dashboard - Sign Up",
+  description: "Sign up for an admin account",
 };
 
 export default function Layout({ children }) {

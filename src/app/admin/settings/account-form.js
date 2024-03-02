@@ -1,9 +1,9 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useCallback, useEffect, useState } from "react";
 
 export default function AccountForm({ user }) {
   const supabase = createClientComponentClient();
@@ -34,7 +34,7 @@ export default function AccountForm({ user }) {
         setAvatarUrl(data.avatar_url);
       }
     } catch (error) {
-      alert("Error loading user data!");
+      console.error("Error loading user data!");
     } finally {
       setLoading(false);
     }
@@ -111,7 +111,7 @@ export default function AccountForm({ user }) {
       </div>
 
       <div>
-        <form action="/auth/signout" method="post">
+        <form action="/auth/logout" method="post">
           <Button variant="secondary" type="submit">
             Sign out
           </Button>
