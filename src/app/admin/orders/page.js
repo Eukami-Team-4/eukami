@@ -1,8 +1,10 @@
+"use client"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import PageWrapper from "../components/layout/page-wrapper";
 import { Button } from "@/components/ui/button";
 import { columns } from "./columns";
 import { DataTable } from "../components/table/data-table";
+import { useEffect, useState } from "react";
 /**
  * @typedef {Object} Order
  * @property {string} id
@@ -11,9 +13,16 @@ import { DataTable } from "../components/table/data-table";
  * @property {string} email
  */
 
-export default async function ProductsPage() {
+export default function OrdersPage() {
   const supabase = createClientComponentClient();
-  const { data: orders } = await supabase.from("orders").select();
+  const [orders, setOrders] = useState([]);
+    useEffect(() => {
+        const getData = async () => {
+            const { data } = await supabase.from("orders").select();
+            setOrders(data);
+        };
+        getData();
+    }, [supabase]);
 
   return (
     <PageWrapper title="Orders" actions={<PageActions />}>

@@ -1,12 +1,21 @@
+"use client"
 import { Button } from "@/components/ui/button";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useEffect, useState } from "react";
 import PageWrapper from "../components/layout/page-wrapper";
 import { DataTable } from "../components/table/data-table";
 import { columns } from "./columns";
 
-export default async function ProductsPage() {
-  const supabase = createServerComponentClient();
-  const { data: products } = await supabase.from("products").select();
+export default function ProductsPage() {
+  const supabase = createClientComponentClient();
+  const [products, setProducts] = useState([]);
+    useEffect(() => {
+        const getData = async () => {
+            const { data } = await supabase.from("products").select();
+            setProducts(data);
+        };
+        getData();
+    }, [supabase]);
 
   return (
     <PageWrapper title="Products" actions={<PageActions />}>

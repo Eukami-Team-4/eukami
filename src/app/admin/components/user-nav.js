@@ -1,21 +1,36 @@
-"use client"
+"use client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuTrigger,
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuGroup,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuShortcut,
+    DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export function UserNav() {
-    const supabase = createServerComponentClient();
+    const supabase = createClientComponentClient();
+
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const {
+                data: { user },
+            } = await supabase.auth.getUser();
+            setUser(user);
+        };
+
+        fetchData();
+    }, [supabase]);
+
     const router = useRouter();
     return (
         <DropdownMenu>
@@ -34,10 +49,10 @@ export function UserNav() {
                 <DropdownMenuLabel className="font-normal">
                     <div className="flex flex-col space-y-1">
                         <p className="text-sm font-medium leading-none">
-                            username
+                            Username
                         </p>
                         <p className="text-xs leading-none text-muted-foreground">
-                            email@mail.com
+                            {user?.email}
                         </p>
                     </div>
                 </DropdownMenuLabel>
