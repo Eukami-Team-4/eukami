@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function Layout({ children }) {
   return (
-    <main className={cn("min-h-screen bg-background font-sans antialiased")}>
+    <main className={cn("absolute h-screen w-screen bg-background font-sans antialiased")}>
       {children}
     </main>
   );

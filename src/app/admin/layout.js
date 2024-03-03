@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import { createClient } from "@/lib/supabase/server";
 import "@/styles/globals.css";
 import { ArrowLeftCircle } from "lucide-react";
 import Link from "next/link";
@@ -11,9 +12,14 @@ export const metadata = {
   description: "Manage the store and view reports.",
 };
 
-export default function Layout({ children }) {
+export default async function Layout({ children }) {
+  const supabase = createClient();
+
+  const { data:{ user} } = await supabase.auth.getUser();
+
+  console.log(user);
   return (
-    <div className={cn("min-h-screen bg-background font-sans antialiased")}>
+    <div className={cn("min-h-screen bg-background font-sans antialiased relative")}>
       <ThemeProvider
         attribute="class"
         defaultTheme="system"
@@ -28,9 +34,9 @@ export default function Layout({ children }) {
             </Badge>
           </Link>
         </div>
-        <div className="border-b">
+        {user && <div className="border-b">
           <AdminNavbar />
-        </div>
+        </div> }
         {children}
       </ThemeProvider>
     </div>
