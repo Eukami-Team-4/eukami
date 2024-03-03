@@ -37,9 +37,13 @@ export const columns = [
     enableHiding: false,
   },
   {
-    accessorKey: "displayName",
+    accessorKey: "name",
     header: ({ column }) => {
-      return <DataTableColumnHeader column={column} title="Display Name" />;
+      return <DataTableColumnHeader column={column} title="Name" />;
+    },
+    cell: ({ row }) => {
+      const name = row.getValue("firstName")+ " " + row.getValue("lastName");
+      return <div className="font-medium">{name}</div>;
     },
     enableHiding: false,
   },

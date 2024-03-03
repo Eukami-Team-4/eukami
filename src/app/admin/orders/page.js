@@ -1,10 +1,10 @@
 "use client"
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import PageWrapper from "../components/layout/page-wrapper";
 import { Button } from "@/components/ui/button";
-import { columns } from "./columns";
-import { DataTable } from "../components/table/data-table";
+import { createClient } from "@/lib/supabase/client";
 import { useEffect, useState } from "react";
+import PageWrapper from "../components/layout/page-wrapper";
+import { DataTable } from "../components/table/data-table";
+import { columns } from "./columns";
 /**
  * @typedef {Object} Order
  * @property {string} id
@@ -14,14 +14,25 @@ import { useEffect, useState } from "react";
  */
 
 export default function OrdersPage() {
-  const supabase = createClientComponentClient();
+  const supabase = createClient();
   const [orders, setOrders] = useState([]);
     useEffect(() => {
-        const getData = async () => {
-            const { data } = await supabase.from("orders").select();
-            setOrders(data);
-        };
-        getData();
+      const getData = async () => {
+        try {
+          const { data, error } = await supabase.schema("Eukami_v1").from("Order").select();
+
+          if (error) {
+            throw new Error(error.message);
+          }
+
+          setOrders(data);
+        } catch (error) {
+          console.error("Failed to fetch orders:", error);
+          // Handle the error in your UI as needed
+        }
+      };
+
+      getData();
     }, [supabase]);
 
   return (

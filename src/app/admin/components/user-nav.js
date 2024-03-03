@@ -11,12 +11,12 @@ import {
     DropdownMenuShortcut,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export function UserNav() {
-    const supabase = createClientComponentClient();
+    const supabase = createClient();
 
     const [user, setUser] = useState(null);
 
