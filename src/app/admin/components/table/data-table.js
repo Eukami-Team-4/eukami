@@ -23,7 +23,7 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  useReactTable
+  useReactTable,
 } from "@tanstack/react-table";
 import { useState } from "react";
 
@@ -60,14 +60,18 @@ export function DataTable({ columns, data, filter }) {
   return (
     <div>
       <div className="flex items-center py-4">
-        <Input
-          placeholder="Filter by name..."
-          value={table.getColumn(filter ||"name")?.getFilterValue() ?? ""}
-          onChange={(event) =>
-            table.getColumn(filter|| "name")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
+        {filter && (
+          <Input
+            placeholder={"Filter by " + (filter)}
+            value={table.getColumn(filter)?.getFilterValue() ?? ""}
+            onChange={(event) =>
+              table
+                .getColumn(filter)
+                ?.setFilterValue(event.target.value)
+            }
+            className="max-w-sm"
+          />
+        )}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
@@ -116,7 +120,8 @@ export function DataTable({ columns, data, filter }) {
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length && table.getRowModel().rows?.length ? (
+            {table.getRowModel().rows?.length &&
+            table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}

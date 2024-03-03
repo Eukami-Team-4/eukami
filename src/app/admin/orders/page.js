@@ -17,11 +17,22 @@ export default function OrdersPage() {
   const supabase = createClient();
   const [orders, setOrders] = useState([]);
     useEffect(() => {
-        const getData = async () => {
-            const { data } = await supabase.from("orders").select();
-            setOrders(data);
-        };
-        getData();
+      const getData = async () => {
+        try {
+          const { data, error } = await supabase.schema("Eukami_v1").from("Order").select();
+
+          if (error) {
+            throw new Error(error.message);
+          }
+
+          setOrders(data);
+        } catch (error) {
+          console.error("Failed to fetch orders:", error);
+          // Handle the error in your UI as needed
+        }
+      };
+
+      getData();
     }, [supabase]);
 
   return (

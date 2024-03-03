@@ -17,7 +17,6 @@ export default async function Layout({ children }) {
 
   const { data:{ user} } = await supabase.auth.getUser();
 
-  console.log(user);
   return (
     <div className={cn("min-h-screen bg-background font-sans antialiased relative")}>
       <ThemeProvider

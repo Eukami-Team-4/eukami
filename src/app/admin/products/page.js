@@ -29,7 +29,7 @@ export default function ProductsPage() {
 
   return (
     <PageWrapper title="Products" actions={<PageActions />}>
-      <DataTable columns={columns} data={products} />
+      <DataTable columns={columns} data={products} filter="name" />
     </PageWrapper>
   );
 }

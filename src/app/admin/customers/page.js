@@ -10,16 +10,27 @@ export default function CustomersPage() {
   const supabase = createClient();
   const [customer, setCustomer] = useState([]);
     useEffect(() => {
-        const getData = async () => {
-            const { data } = await supabase.from("customer").select();
-            setCustomer(data);
-        };
-        getData();
+      const getData = async () => {
+        try {
+          const { data, error } = await supabase.schema("Eukami_v1").from("Customer").select();
+
+          if (error) {
+            throw new Error(error.message);
+          }
+
+          setCustomer(data);
+        } catch (error) {
+          console.error("Failed to fetch customer data:", error);
+          // Handle the error in your UI as needed
+        }
+      };
+
+      getData();
     }, [supabase]);
 
   return (
     <PageWrapper title="Customers" actions={<PageActions />}>
-      <DataTable columns={columns} data={customer} />
+      <DataTable columns={columns} data={customer} filter="name"/>
     </PageWrapper>
   );
 }

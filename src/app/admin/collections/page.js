@@ -11,15 +11,26 @@ export default function CollectionsPage() {
     const [collections, setCollections] = useState([]);
     useEffect(() => {
         const getData = async () => {
-            const { data } = await supabase.from("collections").select();
-            setCollections(data);
+            try {
+                const { data, error } = await supabase.schema("Eukami_v1").from("Collection").select();
+
+                if (error) {
+                    throw new Error(error.message);
+                }
+
+                setCollections(data);
+            } catch (error) {
+                console.error("Failed to fetch collections:", error);
+                // Handle the error in your UI as needed
+            }
         };
+
         getData();
     }, [supabase]);
 
     return (
         <PageWrapper title="Collection" actions={<PageActions />}>
-            <DataTable columns={columns} data={collections} />
+            <DataTable columns={columns} data={collections} filter="name"/>
         </PageWrapper>
     );
 }
