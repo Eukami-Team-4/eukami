@@ -4,10 +4,11 @@ import { FeaturedCollection } from "@/app/(Storefront)/components/featured-colle
 import StorefrontButton from "@/app/(Storefront)/components/storefront-button";
 import { UniqueSellingPoint } from "@/app/(Storefront)/components/unique-selling-point";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, ChevronLeft } from "lucide-react";
+import { CheckCircle2, ChevronLeft, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "sonner";
 import { QuantitySelector } from "../../components/quantity-selector";
 
 const product = {
@@ -50,6 +51,19 @@ const ProductInfo = ({ product }) => {
     if (!product) {
         return null;
     }
+
+    const handleAddToCart = () => {
+        dispatch({
+            type: "ADD_PRODUCT",
+            payload: { product, quantity },
+        });
+        toast(
+        <div className="flex justify-between w-full">
+            {` ${product.name} added to cart`}
+            <ShoppingCart size={16} />
+        </div>
+        )
+    }
     return (
         <section className="container relative flex flex-col items-center justify-between h-full gap-12 py-8 rounded-lg lg:flex-row">
             <div className="relative flex items-center justify-center w-full p-8 aspect-square lg:w-1/2 max-h-96">
@@ -86,12 +100,7 @@ const ProductInfo = ({ product }) => {
                     />
                     <div className="flex gap-6">
                         <StorefrontButton
-                            onClick={() => {
-                                dispatch({
-                                    type: "ADD_PRODUCT",
-                                    payload: { product, quantity },
-                                });
-                            }}
+                            onClick={handleAddToCart}
                         >
                             Add To Cart
                         </StorefrontButton>
