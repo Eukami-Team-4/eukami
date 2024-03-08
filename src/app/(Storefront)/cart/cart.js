@@ -1,9 +1,9 @@
 "use client";
 import { useCart } from "@/app/(Storefront)/cart/cart-context";
 import StorefrontButton from "@/app/(Storefront)/components/storefront-button";
-import { formatCurrency } from "@/app/(Storefront)/products/[productName]/format-currency";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { formatCurrency } from "@/lib/format-currency";
 import { ShoppingCart } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { QuantitySelector } from "../components/quantity-selector";

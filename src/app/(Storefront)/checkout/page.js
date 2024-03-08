@@ -2,7 +2,6 @@
 import { useCart } from "@/app/(Storefront)/cart/cart-context";
 import CheckoutForm from "@/app/(Storefront)/checkout/checkout-form";
 import StorefrontButton from "@/app/(Storefront)/components/storefront-button";
-import { formatCurrency } from "@/app/(Storefront)/products/[productName]/format-currency";
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -10,8 +9,11 @@ import {
     CardFooter,
     CardHeader,
 } from "@/components/ui/card";
+import { formatCurrency } from "@/lib/format-currency";
 import { ChevronLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
+
+//TODO: Checkout page should be dynamic with an id that saves the lineitems to the database
 
 const CheckoutPage = () => {
     const router = useRouter();
