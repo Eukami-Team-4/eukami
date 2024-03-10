@@ -1,18 +1,54 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import {
     Form,
     FormControl,
     FormField,
     FormItem,
     FormLabel,
-    FormMessage,
+    FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+
+// TODO: Delivery Types. Next Working Day, Standard
+// TODO: Multiple Payment Options 
+// TODO: Confirm the things that need to be checked for each order before accepting it
+// TODO (optional): shpping and tracking status link / page
+
+
+// TODO: for now we define this in this form but this will be pulled from the database
+const DeliveryMethods = [
+    {
+        label: 'Next Day delivery',
+        value: 'next',
+        price: 8.99
+    },
+    {
+        label: 'Standard Delivery',
+        value: 'standard',
+        price: 4.99
+    }
+]
+
+// TODO: for now we define this in this form but this will be pulled from the database
+const PaymentMethods = [
+    {
+        label: 'Debit Card',
+        value: 'debit',
+    },
+    {
+        label: 'Credit Card',
+        value: 'credit',
+    },
+    {
+        label: 'Paypal',
+        value: 'paypal',
+    }
+] 
 
 const formSchema = z.object({
     name: z.string().min(2, {
@@ -25,13 +61,14 @@ const formSchema = z.object({
     state: z.string(),
     zip: z.string(),
     country: z.string(),
+    deliveryMethod: z.string(),
     cardName: z.string(),
     cardNumber: z.string(),
     cardExpiry: z.string(),
     cardCvc: z.string(),
 });
 
-const CheckoutForm = () => {
+const CheckoutForm = ({checkoutHandler=()=>{}, submit}) => {
     // 1. Define your form.
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -44,6 +81,7 @@ const CheckoutForm = () => {
             state: "",
             zip: "",
             country: "",
+            deliveryMethod: "standard",
             cardName: "",
             cardNumber: "",
             cardExpiry: "",
@@ -54,12 +92,16 @@ const CheckoutForm = () => {
     // 2. Define a submit handler.
     function onSubmit(values) {
         console.log(values);
+        checkoutHandler(values);
     }
+
+    
 
     return (
         <div>
             <Form {...form}>
                 <form
+                    id="checkout-form"
                     onSubmit={form.handleSubmit(onSubmit)}
                     className="space-y-8"
                 >
@@ -190,8 +232,67 @@ const CheckoutForm = () => {
                             )}
                         />
                         <h3 className="text-sm font-medium uppercase text-primary col-span-full">
+                            Shipping & Delivery Method
+                        </h3>
+                        <FormField
+                            control={form.control}
+                            name="deliveryMethod"
+                            render={({ field }) => (
+                                <FormItem className="space-y-3">
+                                  <FormLabel>Shipping Method</FormLabel>
+                                  <FormControl>
+                                    <RadioGroup
+                                      onValueChange={field.onChange}
+                                      defaultValue={field.value}
+                                      className="flex flex-col gap-1"
+                                    >
+                                      { DeliveryMethods.map((option)=>(
+                                      <FormItem key={option.value} className="flex items-center gap-x-1">
+                                        <FormControl>
+                                          <RadioGroupItem value={option.value} />
+                                        </FormControl>
+                                        <FormLabel className="pb-2 font-normal">
+                                        {option.label}
+                                        </FormLabel>
+                                      </FormItem>))}
+                                    </RadioGroup>
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                        />
+                        <h3 className="text-sm font-medium uppercase text-primary col-span-full">
                             Payment Details
                         </h3>
+                        <div className="col-span-full">
+                        <FormField
+                            control={form.control}
+                            name="paymentMethod"
+                            render={({ field }) => (
+                                <FormItem className="space-y-3">
+                                  <FormLabel>Payment Method</FormLabel>
+                                  <FormControl>
+                                    <RadioGroup
+                                      onValueChange={field.onChange}
+                                      defaultValue={field.value}
+                                      className="flex flex-wrap items-center gap-3"
+                                    >
+                                      { PaymentMethods.map((option)=>(
+                                      <FormItem key={option.value} className="flex items-center gap-x-1">
+                                        <FormControl>
+                                          <RadioGroupItem  value={option.value} />
+                                        </FormControl>
+                                        <FormLabel className="pb-2 font-normal">
+                                        {option.label}
+                                        </FormLabel>
+                                      </FormItem>))}
+                                    </RadioGroup>
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                        />
+                        </div>
                         <FormField
                             control={form.control}
                             name="cardName"

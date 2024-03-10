@@ -2,7 +2,6 @@
 import { useCart } from "@/app/(Storefront)/cart/cart-context";
 import CheckoutForm from "@/app/(Storefront)/checkout/checkout-form";
 import StorefrontButton from "@/app/(Storefront)/components/storefront-button";
-import { formatCurrency } from "@/app/(Storefront)/products/[productName]/format-currency";
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -10,13 +9,18 @@ import {
     CardFooter,
     CardHeader,
 } from "@/components/ui/card";
+import { formatCurrency } from "@/lib/format-currency";
 import { ChevronLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+
+//TODO: Checkout page should be dynamic with an id that saves the lineitems to the database
 
 const CheckoutPage = () => {
     const router = useRouter();
     return (
         <div className="flex flex-col gap-4 lg:p-16">
+
             <div>
                 <Button
                     variant="ghost"
@@ -58,9 +62,28 @@ const CartSummary = () => {
 
     const { cart, dispatch } = useCart();
 
-    function handlePayment() {
-        console.log("perform payment");
+    async function handlePayment() {
+        console.log("performing payment");
+        //wait 2 seconds to simulate payment
+        await new Promise((resolve) => setTimeout(resolve, 2000));
         console.log("payment done");
+    }
+
+    async function validateCart() {
+        console.log("validating cart");
+        //wait 500 ms to simulate validation
+        await new Promise((resolve) => setTimeout(resolve, 500));
+        console.log("cart validated");
+    }
+
+    async function handleCheckout() {
+        console.log("checkout");
+        // TODO: need to await form submit and only move forward on a successful response
+        await validateCart();
+        await handlePayment();
+        dispatch({ type: "CLEAR_CART" });
+        toast.success("Order placed successfully");
+        // router.push("/checkout/success");
     }
     return (
         <div className="flex flex-col gap-3">
@@ -125,7 +148,7 @@ const CartSummary = () => {
                     )}
                 </div>
             </div>
-            <StorefrontButton onClick={handlePayment}>
+            <StorefrontButton onClick={handleCheckout} type='submit' form='checkout-form'>
                 Continue and Pay
             </StorefrontButton>
         </div>
