@@ -11,9 +11,9 @@ import { useState } from "react";
 import { QuantitySelector } from "../../components/quantity-selector";
 
 const product = {
-    name: "Headphones",
+    name: "Fake Product 1",
     image: "/images/product1.png",
-    price: 2999,
+    price: 29,
     description:
         "The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.",
     isFeatured: true,
