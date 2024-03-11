@@ -4,6 +4,7 @@ import PageWrapper from "../components/layout/page-wrapper";
 import { DataTable } from "../components/table/data-table";
 import { columns } from "./columns";
 import { useStore } from "@/app/admin/_context/store-context";
+import CreateCollectionDrawer from "@/app/admin/collections/create-collection-drawer";
 
 export default function CollectionsPage() {
     const store = useStore();
@@ -20,7 +21,7 @@ export default function CollectionsPage() {
 const PageActions = () => {
     return (
         <>
-            <Button>Add Collection</Button>
+            <CreateCollectionDrawer/>
         </>
     );
 };

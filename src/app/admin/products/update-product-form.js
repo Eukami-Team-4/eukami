@@ -208,23 +208,10 @@ export default function UpdateProductForm({ onSubmit, product }) {
             Add up to 10 images to your product. Used to represent your product
             during checkout, in email, social sharing and more.
           </p>
-
-          <FormField
-            control={form.control}
-            name="images"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Images</FormLabel>
-                <FormControl>
-                  <FileUploadDropzone
-                    multiple={true}x
-                    images={images}
-                    setImages={setImages}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+          <FileUploadDropzone
+            multiple={true}
+            images={images}
+            setImages={setImages}
           />
         </div>
       </form>

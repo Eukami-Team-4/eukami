@@ -20,9 +20,9 @@ import {
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
-import { addProduct, getCollections } from "@/lib/supabase/actions";
+import { addProduct } from "@/lib/supabase/actions";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -202,23 +202,10 @@ export default function CreateProductForm({ onSubmit, success, error }) {
             Add up to 10 images to your product. Used to represent your product
             during checkout, in email, social sharing and more.
           </p>
-
-          <FormField
-            control={form.control}
-            name="images"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Images</FormLabel>
-                <FormControl>
-                  <FileUploadDropzone
-                    multiple={true}
-                    images={field.value}
-                    setImages={setImages}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+          <FileUploadDropzone
+            multiple={true}
+            images={images}
+            setImages={setImages}
           />
         </div>
       </form>
