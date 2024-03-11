@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
-import { Badge, MoreHorizontal, Trash2 } from "lucide-react";
+import { MoreHorizontal, Trash2 } from "lucide-react";
 
 import { useAlertProvider } from "@/app/admin/_context/alert-context";
 import UpdateCollectionDrawer from "@/app/admin/collections/update-collection-drawer";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -16,8 +17,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { deleteProduct } from "@/lib/supabase/actions";
 import { useState } from "react";
-import { DataTableColumnHeader } from "../components/table/column-header";
 import { toast } from "sonner";
+import { DataTableColumnHeader } from "../components/table/column-header";
 
 export const columns = [
   {
@@ -55,7 +56,11 @@ export const columns = [
       return <DataTableColumnHeader column={column} title="Description" />;
     },
     cell: ({ row }) => {
-      return <p className="truncate max-w-prose text-muted-foreground">{row.getValue("description")}</p>;
+      return (
+        <p className="truncate max-w-prose text-muted-foreground">
+          {row.getValue("description")}
+        </p>
+      );
     },
   },
   {
@@ -91,8 +96,9 @@ export const columns = [
                   navigator.clipboard.writeText(collection.id);
                   toast(
                     <div>
-                      Collection ID:<Badge variant="secondary">{collection.id}</Badge>{" "}
-                      copied to clipboard
+                      Collection ID:
+                      <Badge variant="secondary">{collection.id}</Badge> copied
+                      to clipboard
                     </div>
                   );
                 }}
@@ -100,7 +106,13 @@ export const columns = [
                 Copy Collection ID
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={()=>{setOpen(true)}}>Edit collection details</DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => {
+                  setOpen(true);
+                }}
+              >
+                Edit collection details
+              </DropdownMenuItem>
               <DropdownMenuItem
                 className="text-destructive focus:text-white focus:bg-destructive"
                 onClick={async () => {
