@@ -1,4 +1,4 @@
-import CreateProductForm from "@/app/admin/products/create-product-form";
+import UpdateProductForm from "@/app/admin/products/update-product-form";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
@@ -10,40 +10,30 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Plus } from "lucide-react";
-import { useState } from "react";
 import { toast } from "sonner";
 
-const CreateProductDrawer = ({ children }) => {
-  const [open, setOpen] = useState(false);
+const UpdateProductDrawer = ({ children, product, open, setOpen}) => {
   function onSubmit(res) {
     if (res.id) {
       setOpen(false);
-      toast.success("Product created successfully");
+      toast.success("Product updated successfully");
     }
   }
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger asChild>
-        {children || (
-          <Button>
-            Add Products <Plus size={16} className="ml-2" />
-          </Button>
-        )}
-      </SheetTrigger>
       <SheetContent
         className="flex flex-col justify-between w-screen "
         side={"bottom"}
       >
         <SheetHeader>
-          <SheetTitle>Add New Product</SheetTitle>
+          <SheetTitle className='truncate'>Edit Product {product.name}</SheetTitle>
           <SheetDescription>
-            Use this form to add a new product to the database
+            Use this form to edit the product details
           </SheetDescription>
         </SheetHeader>
         <ScrollArea className="flex-1 h-dvh">
           <div className="flex-1">
-            <CreateProductForm onSubmit={onSubmit}></CreateProductForm>
+            <UpdateProductForm onSubmit={onSubmit} product={product}></UpdateProductForm>
           </div>
         </ScrollArea>
         <SheetFooter>
@@ -52,7 +42,7 @@ const CreateProductDrawer = ({ children }) => {
               <Button variant="outline">Cancel</Button>
             </SheetTrigger>
             <Button type="submit" form="create-product-form">
-              Create Product
+              Save Changes
             </Button>
           </div>
         </SheetFooter>
@@ -61,4 +51,4 @@ const CreateProductDrawer = ({ children }) => {
   );
 };
 
-export default CreateProductDrawer;
+export default UpdateProductDrawer;

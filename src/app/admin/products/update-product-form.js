@@ -1,3 +1,4 @@
+import { useStore } from "@/app/admin/_context/store-context";
 import FileUploadDropzone from "@/app/admin/products/file-upload-dropzone";
 import {
   Form,
@@ -19,25 +20,26 @@ import {
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
-import { addProduct, getCollections } from "@/lib/supabase/actions";
+import { addProduct } from "@/lib/supabase/actions";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
-// {
+// UpdateSchema: {
 //   availableForSale?: boolean
 //   collection_id?: number | null
 //   created_at?: string
 //   description?: string | null
 //   id?: number
-//   name: string
+//   name?: string
 //   price?: number
 //   salePrice?: number | null
 //   sku?: string | null
 // }
 
-const createProductSchema = z.object({
+const updateProductSchema = z.object({
   name: z.string().min(2, {
     message: "Name must be at least 2 characters.",
   }),
@@ -49,22 +51,27 @@ const createProductSchema = z.object({
   images: z.array(z.object()),
 });
 
-export default function CreateProductForm({ onSubmit, success, error }) {
-  // 1. Define your form.
+export default function UpdateProductForm({ onSubmit, product }) {
   const form = useForm({
-    resolver: zodResolver(createProductSchema),
+    resolver: zodResolver(updateProductSchema),
     defaultValues: {
-      name: "",
-      description: "",
-      availableForSale: true,
-      price: 0,
-      images: [],
+      name: product.name || "",
+      description: product.description || "",
+      collection_id: product.collection_id
+        ? product.collection_id.toString()
+        : undefined,
+      availableForSale: product.availableForSale || false,
+      price: product.price || 0,
+      salePrice: product.salePrice || null,
+      images: product.images || [],
     },
   });
 
   // 2. Define a submit handler.
   async function handleSubmission(values) {
     try {
+      //add the product id to the form data
+      values.id = product.id;
       // add images array to the form data
       values.images = images;
       console.log("submitting: ", values);
@@ -74,16 +81,12 @@ export default function CreateProductForm({ onSubmit, success, error }) {
       toast.error(`Failed to create product:, ${error.message}`);
     }
   }
-  let collections = useRef([]);
 
   const [images, setImages] = useState([]);
 
-  useEffect(() => {
-    async function loadCollections() {
-      collections.current = await getCollections();
-    }
-    loadCollections();
-  }, []);
+  const store = useStore();
+
+  const collections = store.collections || [];
 
   return (
     <Form {...form}>
@@ -135,7 +138,7 @@ export default function CreateProductForm({ onSubmit, success, error }) {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  {collections?.current?.map((collection) => (
+                  {collections?.map((collection) => (
                     <SelectItem
                       key={collection.id}
                       value={collection.id.toString()}

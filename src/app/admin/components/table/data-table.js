@@ -75,7 +75,7 @@ export function DataTable({ columns, data, filter }) {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
-              Show / Hide
+              Show / Hide Columns
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
