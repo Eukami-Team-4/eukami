@@ -17,6 +17,7 @@ import {
 import { deleteProduct } from "@/lib/supabase/actions";
 import { useState } from "react";
 import { DataTableColumnHeader } from "../components/table/column-header";
+import { toast } from "sonner";
 
 export const columns = [
   {
