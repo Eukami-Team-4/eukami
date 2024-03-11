@@ -9,7 +9,7 @@ export async function getProducts() {
     const { data, error } = await supabase
       .schema("Eukami_v1")
       .from("Product")
-      .select('*, collection: collection_id (name)');
+      .select("*, collection: collection_id (name)");
 
     if (error) {
       throw new Error(error.message);
@@ -60,7 +60,7 @@ export async function deleteProduct(productId) {
       .schema("Eukami_v1")
       .from("Product")
       .delete()
-      .eq('id', productId);
+      .eq("id", productId);
 
     if (error) {
       throw new Error(error.message);
@@ -129,6 +129,26 @@ export async function getCustomers() {
     return data;
   } catch (error) {
     console.error("Failed to fetch customers:", error);
+    throw error;
+  }
+}
+
+export async function getImageURL(filePath, options = {}) {
+  const supabase = createClient();
+
+  console.log("Getting image URL for", filePath);
+
+  try {
+    const { data, error } = supabase.storage
+      .from("images")
+      .getPublicUrl(filePath, options);
+
+    if (error) {
+      throw new Error(error.message);
+    }
+    return data;
+  } catch (error) {
+    console.error("Failed to get image URL:", error);
     throw error;
   }
 }

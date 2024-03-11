@@ -48,7 +48,7 @@ const updateProductSchema = z.object({
   availableForSale: z.coerce.boolean(),
   price: z.coerce.number().optional(),
   salePrice: z.coerce.number().optional(),
-  images: z.array(z.object()),
+  // images: z.array(z.object()),
 });
 
 export default function UpdateProductForm({ onSubmit, product }) {
@@ -62,8 +62,8 @@ export default function UpdateProductForm({ onSubmit, product }) {
         : undefined,
       availableForSale: product.availableForSale || false,
       price: product.price || 0,
-      salePrice: product.salePrice || null,
-      images: product.images || [],
+      salePrice: product.salePrice || undefined,
+      // images: product.images || [],
     },
   });
 
@@ -82,7 +82,7 @@ export default function UpdateProductForm({ onSubmit, product }) {
     }
   }
 
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState(product.images || []);
 
   const store = useStore();
 
@@ -217,8 +217,8 @@ export default function UpdateProductForm({ onSubmit, product }) {
                 <FormLabel>Images</FormLabel>
                 <FormControl>
                   <FileUploadDropzone
-                    multiple={true}
-                    images={field.value}
+                    multiple={true}x
+                    images={images}
                     setImages={setImages}
                   />
                 </FormControl>

@@ -1,3 +1,4 @@
+import { useStore } from "@/app/admin/_context/store-context";
 import FileUploadDropzone from "@/app/admin/products/file-upload-dropzone";
 import {
   Form,
@@ -74,16 +75,12 @@ export default function CreateProductForm({ onSubmit, success, error }) {
       toast.error(`Failed to create product:, ${error.message}`);
     }
   }
-  let collections = useRef([]);
 
   const [images, setImages] = useState([]);
 
-  useEffect(() => {
-    async function loadCollections() {
-      collections.current = await getCollections();
-    }
-    loadCollections();
-  }, []);
+  const store = useStore();
+
+  const collections = store.collections || [];
 
   return (
     <Form {...form}>
@@ -135,7 +132,7 @@ export default function CreateProductForm({ onSubmit, success, error }) {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  {collections?.current?.map((collection) => (
+                  {collections?.map((collection) => (
                     <SelectItem
                       key={collection.id}
                       value={collection.id.toString()}

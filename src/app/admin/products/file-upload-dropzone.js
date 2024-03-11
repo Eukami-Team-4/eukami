@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { getImageURL } from "@/lib/supabase/actions";
 import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 import { ImageIcon } from "lucide-react";
@@ -44,17 +45,35 @@ const FileUploadDropzone = ({ multiple = "false", images, setImages }) => {
     setFiles((prevFiles) => [...prevFiles, ...newFiles]);
 
     try {
-      newFiles.forEach(async (file) => {
-        const res = await uploadImage(file);
-        if (res) {
-          toast.success(`Image ${file.name} uploaded successfully`);
-          setImages((prevImages) => [...prevImages, res]);
-        }
-      });
+      handleFileUpload(newFiles);
     } catch (error) {
       toast.error("Failed to upload image:", error);
     }
   }, []);
+
+  function handleFileUpload(newFiles = []) {
+    newFiles.forEach(async (file) => {
+      const res = await uploadImage(file);
+      if (res) {
+        toast.success(`Image ${file.name} uploaded successfully`);
+        console.log("res", res);
+        const { publicUrl } = await getImageURL(res.path);
+        if (publicUrl) {
+          console.log("publicUrl", publicUrl);
+          setImages((prevImages) => [
+            ...prevImages,
+            {
+              name: file.name,
+              path: res.path,
+              fullPath: res.fullPath,
+              preview: `${publicUrl}?width=100&height=100`,
+              publicUrl: publicUrl,
+            },
+          ]);
+        }
+      }
+    });
+  }
 
   const handleChange = (event) => {
     if (!event.target.files || event.target.files.length == 0) {
@@ -69,31 +88,36 @@ const FileUploadDropzone = ({ multiple = "false", images, setImages }) => {
     setFiles((prevFiles) => [...prevFiles, ...newFiles]);
 
     try {
-      newFiles.forEach(async (file) => {
-        const res = await uploadImage(file);
-        if (res) {
-          toast.success(`Image ${file.name} uploaded successfully`);
-          setImages((prevImages) => [...prevImages, res]);
-        }
-      });
+      handleFileUpload(newFiles);
     } catch (error) {
       toast.error("Failed to upload image:", error);
     }
   };
 
+  const [initialImagesLoaded, setInitialImagesLoaded] = useState(false);
+
+  useEffect(() => {
+    if (images.length > 0 && !initialImagesLoaded) {
+      setFiles(images);
+      setInitialImagesLoaded(true);
+    }
+  }, []);
+
   // Render file names or previews
-  const renderFiles = files.map((file) => (
-    <div key={file.name} className="w-20 text-xs">
-      {file.type.startsWith("image/") && (
-        <img
-          src={file.preview}
-          className="object-cover w-20 h-20 border rounded-md aspect-square"
-          alt="Preview"
-        />
-      )}
-      <p className="truncate">{file.name}</p>
-    </div>
-  ));
+  const renderImagePreviews = files.map(
+    (file) => (
+      (
+        <div key={file.name+Date.now()} className="w-20 text-xs">
+          <img
+            src={file.preview}
+            className="object-cover w-20 h-20 border rounded-md aspect-square"
+            alt="Preview"
+          />
+          <p className="truncate">{file.name}</p>
+        </div>
+      )
+    )
+  );
 
   // Cleanup
   useEffect(() => {
@@ -134,7 +158,7 @@ const FileUploadDropzone = ({ multiple = "false", images, setImages }) => {
       </div>
       <div className="py-2">
         {files.length > 0 && (
-          <ul className="flex flex-wrap gap-1">{renderFiles}</ul>
+          <ul className="flex flex-wrap gap-1">{renderImagePreviews}</ul>
         )}
       </div>
     </div>
