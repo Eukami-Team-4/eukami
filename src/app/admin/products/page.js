@@ -1,33 +1,16 @@
 "use client";
-import CreateProductDialog from "@/app/admin/products/create-product-drawer";
-import { createClient } from "@/lib/supabase/client";
-import { useEffect, useState } from "react";
+import { useStore } from "@/app/admin/_context/store-context";
+import CreateProductDrawer from "@/app/admin/products/create-product-drawer";
 import PageWrapper from "../components/layout/page-wrapper";
 import { DataTable } from "../components/table/data-table";
 import { columns } from "./columns";
 
 export default function ProductsPage() {
-  const supabase = createClient();
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const { data, error } = await supabase
-          .schema("Eukami_v1")
-          .from("Product").select();
+  const store = useStore();
 
-        if (error) {
-          throw new Error(error.message);
-        }
-        setProducts(data);
-      } catch (error) {
-        console.error("Failed to fetch products:", error);
-        // Handle the error in your UI as needed
-      }
-    };
+  const products = store.products || [];
 
-    getData();
-  }, [supabase]);
+  // should display an error if there is no store
 
   return (
     <PageWrapper title="Products" actions={<PageActions />}>
@@ -39,7 +22,7 @@ export default function ProductsPage() {
 const PageActions = () => {
   return (
     <>
-      <CreateProductDialog />
+      <CreateProductDrawer />
     </>
   );
 };

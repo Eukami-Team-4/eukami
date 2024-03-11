@@ -1,7 +1,6 @@
 "use client"
+import { useStore } from "@/app/admin/_context/store-context";
 import { Button } from "@/components/ui/button";
-import { createClient } from "@/lib/supabase/client";
-import { useEffect, useState } from "react";
 import PageWrapper from "../components/layout/page-wrapper";
 import { DataTable } from "../components/table/data-table";
 import { columns } from "./columns";
@@ -14,26 +13,9 @@ import { columns } from "./columns";
  */
 
 export default function OrdersPage() {
-  const supabase = createClient();
-  const [orders, setOrders] = useState([]);
-    useEffect(() => {
-      const getData = async () => {
-        try {
-          const { data, error } = await supabase.schema("Eukami_v1").from("Order").select();
+  const store = useStore();
 
-          if (error) {
-            throw new Error(error.message);
-          }
-
-          setOrders(data);
-        } catch (error) {
-          console.error("Failed to fetch orders:", error);
-          // Handle the error in your UI as needed
-        }
-      };
-
-      getData();
-    }, [supabase]);
+  const orders = store.orders || [];
 
   return (
     <PageWrapper title="Orders" actions={<PageActions />}>
