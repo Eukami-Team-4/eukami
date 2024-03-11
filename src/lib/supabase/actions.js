@@ -93,6 +93,57 @@ export async function getCollections() {
   }
 }
 
+export async function addCollection(formData) {
+  const supabase = createClient();
+
+  if (!formData) {
+    throw new Error("No data provided");
+  }
+
+  try {
+    const { data, error } = await supabase
+      .schema("Eukami_v1")
+      .from("Collection")
+      .upsert({ ...formData })
+      .select()
+      .single();
+
+    if (error) {
+      throw new Error(error.message);
+    }
+    return data;
+  } catch (error) {
+    console.error("Failed to create collection:", error);
+    throw error;
+  }
+}
+
+export async function deleteCollection(collectionId) {
+  const supabase = createClient();
+
+  if (!collectionId) {
+    throw new Error("No collection ID provided");
+  }
+
+  try {
+    console.log("Deleting collection", collectionId);
+    const { error } = await supabase
+      .schema("Eukami_v1")
+      .from("Collection")
+      .delete()
+      .eq("id", collectionId);
+
+    if (error) {
+      throw new Error(error.message);
+    }
+    console.log("Deleted collection", collectionId);
+    return true;
+  } catch (error) {
+    console.error("Failed to delete collection:", error);
+    throw error;
+  }
+}
+
 export async function getOrders() {
   const supabase = createClient();
 

@@ -170,7 +170,7 @@ async function uploadImage(file) {
 
   const fileExt = file.name.split(".").pop();
   const fileName = `${Math.floor(Math.random() * 1000000000)}.${fileExt}`;
-  const filePath = `product/${fileName}`;
+  const filePath = `${fileName}`;
 
   try {
     const { data, error: uploadError } = await supabase.storage
