@@ -31,19 +31,24 @@ GitHub: Aminkhadi
 
 
 Introduction
+
 The purpose of the Team Project module is to evaluate the team’s ability to communicate on technical work, problem solve, absolve conflict and work as a team. 
 
 Aim of the project 
+
 The purpose of the software project is to design and implement an e-commerce website. The website will focus on selling audio products including, headphones, earphones, speakers, and other electronic products. 
 
 Website URL 
+
 Eukami website: https://eukami.vercel.app/
 
 Purpose of the website 
+
 The aim of the project is to design a website which focuses on selling audio products to consumers. These products include headphones, earphones, speakers and other electronic products. 
 The target audience of this platform is aimed towards customers between the age of 14-30. Products selected for the website are heavily based on listening to music. 
 
 Tools that have been used
+
 Digital Ocean
 The website EUKAMI is hosted on Digital Ocean, a cloud hosting provider.
 MYSQL
@@ -64,6 +69,7 @@ GoogleMeet
 GoogleMeet was used for its screen sharing features and weekly online meetup. Discussion were based on setting goals, discussing challenges and allocating task to each individual team member. 
 
 What we have learnt
+
 During this team project module, we have learnt to effectively work as a team, solve disputes, identify issues within the project and allocate task to team members which best fits their strengths.
 In terms of technical skills, software tools were learnt such as html, CSS, JavaScript, MYSQL and Git + GitHub in order to develop the EUKAMI website. 
 
