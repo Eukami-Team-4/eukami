@@ -6,33 +6,32 @@ const ProfilePage = () => {
     return (
         <div className="flex flex-col">
             <h1 className="flex items-center justify-center w-full h-20 mt-20 mb-5 text-4xl font-bold uppercase">
-            PROFILE
+            PROFILE 
             </h1>
             
             <div className ="flex items-center justify-center mb-10">
-                <div className="rounded-full w-28 h-28 w bg-slate-300">
+                <div className="rounded-full w-28 h-28 w bg-slate-300"><Pencil size={16} className="absolute mt-[92px] ml-[86px] pointer-events-none"/>
                 </div>
             </div>
 
             <div className ="relative flex items-center justify-center w-2/5 mx-auto mb-10">
-                <Input className=" h-10 block w-full rounded-none py-1.5 pr-10 bg-white border-white text-xs"
+                <Input className="block w-full h-10 py-1.5 pr-10 text-xs bg-white border-white rounded-none "
                 type="text" id="name" name="name" placeholder="Name"></Input><Pencil size={16} className="absolute pointer-events-none right-4"/>
             </div>
 
-            <div className ="flex items-center justify-center mb-10">
-                <input className="w-2/5 h-10 pl-10 text-xs"
-                type="text" id="name" name="name" placeholder="Email"></input>
+            <div className ="relative flex items-center justify-center w-2/5 mx-auto mb-10">
+                <Input className="block w-full h-10 py-1.5 pr-10 text-xs bg-white border-white rounded-none "
+                type="text" id="email" name="email" placeholder="Email"></Input><Pencil size={16} className="absolute pointer-events-none right-4"/>
             </div>
 
-
-            <div className ="flex items-center justify-center mb-10">
-                <input className="w-2/5 h-10 pl-10 text-xs"
-                type="text" id="name" name="name" placeholder="Phone Number"></input>
+            <div className ="relative flex items-center justify-center w-2/5 mx-auto mb-10">
+                <Input className="block w-full h-10 py-1.5 pr-10 text-xs bg-white border-white rounded-none "
+                type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number"></Input><Pencil size={16} className="absolute pointer-events-none right-4"/>
             </div>
+
 
             <div className ="flex items-center justify-center mb-10">
                 <button className="px-4 py-2 text-[#F8F9FA] bg-[#0C233B] rounded-sm hover:text-[#FF9900]">Save</button>
-                <Button>Save</Button>
             </div>
             
         </div>
