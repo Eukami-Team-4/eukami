@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Pencil } from "lucide-react";
 
@@ -19,21 +20,20 @@ const ProfilePage = () => {
             </div>
 
             <div className ="flex items-center justify-center mb-10">
-                <input className="w-2/5 h-10 text-xs bo"
-                type="text" id="name" name="name" placeholder="       Email"></input>
+                <input className="w-2/5 h-10 pl-10 text-xs"
+                type="text" id="name" name="name" placeholder="Email"></input>
             </div>
 
 
             <div className ="flex items-center justify-center mb-10">
-                <input className="w-2/5 h-10 text-xs text-gray-500"
-                type="text" id="name" name="name" placeholder="       Phone Number"></input>
+                <input className="w-2/5 h-10 pl-10 text-xs"
+                type="text" id="name" name="name" placeholder="Phone Number"></input>
             </div>
 
             <div className ="flex items-center justify-center mb-10">
-                <button>Save</button>
+                <button className="px-4 py-2 text-[#F8F9FA] bg-[#0C233B] rounded-sm hover:text-[#FF9900]">Save</button>
+                <Button>Save</Button>
             </div>
-            
-
             
         </div>
     );
