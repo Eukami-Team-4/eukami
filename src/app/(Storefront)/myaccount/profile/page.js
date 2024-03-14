@@ -22,7 +22,7 @@ const ProfilePage = () => {
 
 
             <div className ="flex items-center justify-center mb-10">
-                <input className="w-2/5 h-10 pl-10 text-xs text-gray-500"
+                <input className="w-2/5 h-10 pl-10 text-xs"
                 type="text" id="name" name="name" placeholder="Phone Number"></input>
             </div>
 
