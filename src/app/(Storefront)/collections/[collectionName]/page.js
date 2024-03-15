@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 const CollectionPage = ({ params }) => {
+
   return (
     <main className="pb-16 space-y-16">
       <section className="flex items-center justify-center w-full h-40 text-4xl font-medium uppercase bg-indigoDye text-seasalt">
