@@ -7,9 +7,10 @@ import {
 
 const FaqPage = () => {
   return (
-    <div>
-      this is a faq page
-      <h1 className="text-red-500">FAQ</h1>
+    <div className="px-20 pt-20 bg-[F1F1F1]">
+      <h1 className="mt-3 mb-6 font-[650] Inter text-black">FAQ&#39;S</h1>
+      
+      <div className="flex flex=col items-center  mx-2 px-4 mb-80 bg-white">  
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
           <AccordionTrigger>Can I return my order in-store?</AccordionTrigger>
@@ -32,6 +33,8 @@ const FaqPage = () => {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
+      </div>
+    
     </div>
   );
 };
