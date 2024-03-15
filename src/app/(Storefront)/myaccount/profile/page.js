@@ -10,7 +10,7 @@ const ProfilePage = () => {
             </h1>
             
             <div className ="flex items-center justify-center mb-10">
-                <div className="rounded-full w-28 h-28 w bg-slate-300"><Pencil size={16} className="absolute mt-[92px] ml-[86px] pointer-events-none"/>
+                <div className="flex items-end justify-end rounded-full w-28 h-28 w bg-slate-300"><Pencil size={16} className="pointer-events-none"/>
                 </div>
             </div>
 
