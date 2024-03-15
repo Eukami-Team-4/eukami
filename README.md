@@ -4,30 +4,37 @@ EUKAMI
 # Information on each team member
 ## Kenny Kei Yun Sum 
 Student ID: 230215740
+
 GitHub: Kenji1245
 
 ## Muhtasib-Billah Dahir
 Student ID: 170022893
+
 GitHub: Muhtasib1
 
 ## Usman Ali Iqbal
 Student ID: 170220776
+
 GitHub: Usman91919
 
 ## Avinash Kommalapati
 Student ID: 230381001
+
 GitHub: Avinashkom
 
 ## Ifeoluwa Odubela
 Student ID: 230399822
+
 GitHub: Ife-Ody
 
 ## Eniola Oduekun
 Student ID: 230402030
+
 GitHub: enzoriise
 
 ## Khadija Amin
 Student ID: 190030308
+
 GitHub: Aminkhadi
 
 
