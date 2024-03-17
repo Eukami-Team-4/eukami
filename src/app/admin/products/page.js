@@ -1,5 +1,5 @@
 "use client";
-import { useStore } from "@/app/admin/_context/store-context";
+import { useStore } from "@/app/_context/store-context";
 import CreateProductDrawer from "@/app/admin/products/create-product-drawer";
 import PageWrapper from "../components/layout/page-wrapper";
 import { DataTable } from "../components/table/data-table";

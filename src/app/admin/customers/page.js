@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import PageWrapper from "../components/layout/page-wrapper";
 import { DataTable } from "../components/table/data-table";
 import { columns } from "./columns";
-import { useStore } from "@/app/admin/_context/store-context";
+import { useStore } from "@/app/_context/store-context";
 
 export default function CustomersPage() {
   const store = useStore();
