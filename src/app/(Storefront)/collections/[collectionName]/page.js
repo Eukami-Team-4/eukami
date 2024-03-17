@@ -64,7 +64,7 @@ const ProductCard = ({ product, reversed, collectionName }) => {
                 </h1>
                 <p className="text-onyx">{product.description}</p>
                 <div>
-                    <StorefrontButton href={`/products/${product.id}`}>
+                    <StorefrontButton href={`/products/${product.name}`}>
                         See Product
                     </StorefrontButton>
                 </div>
