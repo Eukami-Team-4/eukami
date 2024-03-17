@@ -1,20 +1,40 @@
 import { FeaturedCollection } from "@/app/(Storefront)/components/featured-collection";
 import StorefrontButton from "@/app/(Storefront)/components/storefront-button";
 import { UniqueSellingPoint } from "@/app/(Storefront)/components/unique-selling-point";
+import { getCollections, getProducts } from "@/lib/supabase/actions";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
-const CollectionPage = ({ params }) => {
+export const revalidate = 60 * 5 // revalidate at most every 5 minutes
+
+const CollectionPage = async ({ params }) => {
+    const collections = await getCollections()
+    const products = await getProducts()
+    //params collection must exist in collections
+    const collection = collections.find(
+        (collection) => collection.name.toLowerCase() === params.collectionName
+    );
+
+    //filter only products that belong to the collection
+    const collectionProducts = products.filter(
+        (product) => product.collection_id === collection.id
+    );
+
+    if (!collection) {
+        redirect("/");
+    }
+    
     return (
         <main className="pb-16 space-y-16">
             <section className="flex items-center justify-center w-full h-40 text-4xl font-medium uppercase bg-indigoDye text-seasalt">
-                {params.collectionName}
+                {collection.name}
             </section>
 
-            {Products.map((product, index) => (
+            {collectionProducts.map((product, index) => (
                 <ProductCard
                     key={product.name}
-                    collectionName={params.collectionName}
+                    collectionName={collection.name}
                     product={product}
                     reversed={index % 2 === 0}
                 />
@@ -24,22 +44,6 @@ const CollectionPage = ({ params }) => {
         </main>
     );
 };
-
-const Products = [
-    {
-        name: "Product 1",
-        image: "/images/hp1.png",
-        description:
-            "Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.",
-        isFeatured: true,
-    },
-    {
-        name: "Product 2",
-        image: "/images/hp1.png",
-        description:
-            "Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.",
-    },
-];
 
 const ProductCard = ({ product, reversed, collectionName }) => {
     return (
@@ -60,7 +64,7 @@ const ProductCard = ({ product, reversed, collectionName }) => {
                 </h1>
                 <p className="text-onyx">{product.description}</p>
                 <div>
-                    <StorefrontButton href="/products/1">
+                    <StorefrontButton href={`/products/${product.id}`}>
                         See Product
                     </StorefrontButton>
                 </div>
@@ -68,7 +72,7 @@ const ProductCard = ({ product, reversed, collectionName }) => {
             <div className="relative flex items-center justify-center w-full p-8 aspect-square lg:w-1/2">
                 <div>
                     <Image
-                        src={product.image}
+                        src={product.images[0]?.publicUrl}
                         fill
                         className="object-contain rounded-lg lg:h-72"
                         alt={product.name}
