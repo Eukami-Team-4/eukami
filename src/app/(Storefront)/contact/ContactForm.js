@@ -29,7 +29,7 @@ const formSchema = z.object({
   }, {
     message: "A valid phone number is required",
   }),
-  message: z.string().min(5, {
+  message: z.string({required_error: "A valid message is required"}).min(5, {
     message: "A valid message is required",
   }),
 });
@@ -77,7 +77,7 @@ export const ContactForm = () => {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel required>Name</FormLabel>
                 <FormControl>
                   <Input placeholder="John Doe" {...field} />
                 </FormControl>
@@ -90,7 +90,7 @@ export const ContactForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email Address</FormLabel>
+                <FormLabel required>Email Address</FormLabel>
                 <FormControl>
                   <Input type="email" placeholder="mail@mail.com" {...field} />
                 </FormControl>
@@ -103,7 +103,7 @@ export const ContactForm = () => {
             name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Phone Number</FormLabel>
+                <FormLabel required>Phone Number</FormLabel>
                 <FormControl>
                   <Input type="phone" placeholder="+447412738403" {...field} />
                 </FormControl>
@@ -116,7 +116,7 @@ export const ContactForm = () => {
             name="message"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Message</FormLabel>
+                <FormLabel required>Message</FormLabel>
                 <FormControl>
                 <Textarea
                   placeholder="Description"
