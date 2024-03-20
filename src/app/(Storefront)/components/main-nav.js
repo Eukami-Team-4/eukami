@@ -13,6 +13,9 @@ const StorefrontRoutes = [
     {
         name: "Earphones", href: '/collections/earphones',
     },
+    {
+        name:"Contact Us", href:"/contact"
+    }
 ]
 
 const MainNav = ({...props}) => {
