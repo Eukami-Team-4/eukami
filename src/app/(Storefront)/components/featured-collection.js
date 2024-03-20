@@ -6,7 +6,7 @@ export const FeaturedCollection = ({params}) => {
   return (
     <section className="container py-12">
       <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
-        {collections.map((collection, index) => (
+        {featuredCollections.map((collection, index) => (
           <div key={index} className="relative rounded-md h-96">
             <div className="flex flex-col items-center justify-end h-full gap-3 p-6">
               <Image
@@ -14,7 +14,7 @@ export const FeaturedCollection = ({params}) => {
                 height={380}
                 className="object-contain w-48 rounded-md aspect-square"
                 src={collection.image}
-                alt="" />
+                alt={collection.name} />
               <div className="space-y-4 text-center">
                 <h3 className="font-medium uppercase">{collection.name}</h3>
                 <StorefrontButton
@@ -37,18 +37,18 @@ export const FeaturedCollection = ({params}) => {
   );
 };
 
-export const collections = [
+export const featuredCollections = [
   {
     name: "Headphones",
-    image: "/images/collection-headphones.png",
+    image: "https://xbufnzihtjlgkfljttlv.supabase.co/storage/v1/object/public/images/headphones.png?t=2024-03-20T07%3A56%3A24.595Z",
   },
   {
     name: "Earphones",
-    image: "/images/hp1.png",
+    image: "https://xbufnzihtjlgkfljttlv.supabase.co/storage/v1/object/public/images/earphones.png?t=2024-03-20T07%3A54%3A32.897Z",
   },
   {
     name: "Speakers",
-    image: "/images/hp2.png",
+    image: "https://xbufnzihtjlgkfljttlv.supabase.co/storage/v1/object/public/images/speakers.png",
   },
 ];
 

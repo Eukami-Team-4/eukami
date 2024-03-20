@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { formatCurrency } from "@/lib/format-currency";
 import { ShoppingCart } from "lucide-react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { QuantitySelector } from "../components/quantity-selector";
 
@@ -54,32 +55,32 @@ const Cart = () => {
                         </Button>
                     </div>
 
-                    <ul>
-                        {cart.lineItems.map((item, id) => (
+                    <ul className="flex flex-col gap-3">
+                        {cart.lineItems.map((item) => (
                             <li
-                                key={id}
+                                key={item?.product?.id}
                                 className="flex items-center justify-between"
                             >
                                 <div className="flex items-center gap-3 text-sm">
-                                    <div className="flex items-center justify-center w-16 h-16 rounded-md aspect-square bg-muted">
-                                        photo
+                                    <div className="relative flex items-center justify-center w-16 h-16 rounded-md aspect-square bg-muted">
+                                       <Image src={item?.product?.images[0]?.publicUrl} alt="" fill className="items-center justify-center object-cover w-16 h-16 rounded-md aspect-square "></Image>
                                     </div>
                                     <div className="flex flex-col gap-1">
                                         <div className="font-medium uppercase truncate">
-                                            {item.product.name}
+                                            {item?.product?.name}
                                         </div>
                                         <div className="text-muted-foreground">
-                                            {formatCurrency(item.product.price)}
+                                            {formatCurrency(item?.product?.price)}
                                         </div>
                                     </div>
                                 </div>
                                 <div>
                                     <QuantitySelector
                                         size="sm"
-                                        quantity={item.quantity}
+                                        quantity={item?.quantity}
                                         setQuantity={(quantity) => {
                                             handleChangeQuantity(
-                                                item.product.id,
+                                                item?.product?.id,
                                                 quantity
                                             );
                                         }}
@@ -95,7 +96,7 @@ const Cart = () => {
                             {formatCurrency(cart.lineItems.reduce(
                                 (prev, current) =>
                                     prev +
-                                    current.product.price * current.quantity,
+                                    current?.product?.price * current?.quantity,
                                 0
                             ))}
                         </div>

@@ -77,6 +77,8 @@ GoogleMeet was used for its screen sharing features and weekly online meetup. Di
 A platform used to implement a visual representation of the EUKAMI website design. This grants team members a mental model on what the website should look like using code. 
 ## Git & GitHub
 Git and GitHub was used to allow multiple developers to work on the same codebase. It also allows developers a space for cooperation and changes to code to be reviewed, discussed, and tested before merging into the main code. 
+## Vercel 
+A frontend Cloud platform, which maintains the EUKAMI website framework. 
 
 # What we have learnt
 
