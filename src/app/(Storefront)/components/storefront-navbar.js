@@ -8,10 +8,6 @@ import { toast } from "sonner";
 
 
 export function Navbar() {
-  
-  function openCart(e){
-    toast("This will open the cart in the future")
-  }
   return (
     <div className="w-full bg-indigoDye">
       <div className="container flex items-center justify-between p-4 py-6 text-white border-b border-platinum/30">

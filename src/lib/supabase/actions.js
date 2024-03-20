@@ -203,3 +203,28 @@ export async function getImageURL(filePath, options = {}) {
     throw error;
   }
 }
+
+export async function addSupportTicket(formData) {
+  const supabase = createClient();
+
+  if (!formData) {
+    throw new Error("No data provided");
+  }
+
+  try {
+    const { data, error } = await supabase
+      .schema("Eukami_v1")
+      .from("Support_Ticket")
+      .upsert({ ...formData })
+      .select()
+      .single();
+
+    if (error) {
+      throw new Error(error.message);
+    }
+    return data;
+  } catch (error) {
+    console.error("Failed to create support ticket:", error);
+    throw error;
+  }
+}
