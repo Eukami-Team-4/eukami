@@ -1,4 +1,4 @@
-import { useStore } from "@/app/admin/_context/store-context";
+import { useStore } from "@/app/_context/store-context";
 import FileUploadDropzone from "@/app/admin/products/file-upload-dropzone";
 import {
   Form,

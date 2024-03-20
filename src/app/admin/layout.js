@@ -7,7 +7,7 @@ import { cn } from "../../lib/utils";
 import { AdminNavbar } from "./AdminNavbar";
 import { ThemeProvider } from "./components/theme-provider";
 import { AlertProvider } from "@/app/admin/_context/alert-context";
-import { StoreProvider } from "@/app/admin/_context/store-context";
+import { StoreProvider } from "@/app/_context/store-context";
 
 export const metadata = {
   title: "Admin Dashboard",

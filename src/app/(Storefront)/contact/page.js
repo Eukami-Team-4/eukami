@@ -1,5 +1,4 @@
-import { Input } 
-from "@/components/ui/input.jsx";
+import { ContactForm } from "./ContactForm";
 
 const ContactPage = () => {
   return (
@@ -58,30 +57,32 @@ const ContactPage = () => {
         ></textarea>
         <button
           type="submit"
-          className="w-16 px-1.5 py-1 text-base font-normal text-white bg-black rounded-md cursor-pointer hover:bg-gray-500"
+          className="p-2 text-white bg-black rounded-md cursor-pointer hover:bg-gray-500"
         >
           Submit
         </button>
       </form>
-      <div className="grid grid-cols-2 gap-4 mx-auto mt-8 text-center">
-          <div grid1>
-            <p>Phone: +44 8512309858</p>
-            <p>
-              Email:{" "}
-              <a
-                href="mailto:Eukami@gmail.com"
-                className="text-gray-500 hover:underline"
-              >
-                Eukami@gmail.com
-              </a>
-            </p>
-          </div>
-          <div grid2>
-            <p>Eukami Audio</p>
-            <p>Birmingham</p>
-            <p>United Kingdom</p>
-            <p>B47ET</p>
-          </div> 
+      <div className="mt-8 text-center contact-info">
+        <p className="font-bold">Eukami Audio</p>
+        <p>Birmingham, United Kingdom</p>
+        <p>Phone: +44 8512309858</p>
+        <p>
+          Email:{" "}
+          <a
+            href="mailto:Eukami@gmail.com"
+            className="text-gray-500 hover:underline"
+          >
+            Eukami@gmail.com
+          </a>
+        </p>
+      </div>
+      <div className="h-full p-3 px-6 min-h-20">
+        <h3 className="pb-3 font-medium uppercase text-brightOrange">
+          Find us at
+        </h3>
+        <p className="text-sm">
+          Eukami Audio <br /> Birmingham <br /> United Kingdom B47ET
+        </p>
       </div>
     </div>
   );
