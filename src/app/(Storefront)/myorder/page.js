@@ -1,7 +1,7 @@
 
 const MyOrder = () => {
     return (
-        <div className="">
+        <div className="container p-4 mx-auto">
 
         </div>
     );
