@@ -1,4 +1,3 @@
-"use client";
 import { useSignOut, useUser } from "@/app/_context/auth-context";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -12,16 +11,12 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { createClient } from "@/lib/supabase/client";
-import { ArrowRight, ArrowRightCircle, User } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { ArrowRightCircle, User } from "lucide-react";
+import Link from "next/link";
 
 export const UserDropdown = () => {
   const { user } = useUser();
   const signOut = useSignOut();
-
-  const router = useRouter();
 
   if (!user) {
     return <NoUserDropdown />;
@@ -47,24 +42,23 @@ export const UserDropdown = () => {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem onSelect={() => router.push("/myaccount/profile")}>
-            Profile
-          </DropdownMenuItem>
-          <DropdownMenuItem onSelect={() => router.push("/myaccount/orders")}>
-            My Orders
-          </DropdownMenuItem>
-          <DropdownMenuItem onSelect={() => router.push("/myaccount/addresses")}>
-            My Addresses
-          </DropdownMenuItem>
+          <Link href="/myaccount/profile">
+            <DropdownMenuItem>Profile</DropdownMenuItem>
+          </Link>
+          <Link href="/myaccount/orders">
+            <DropdownMenuItem>My Orders</DropdownMenuItem>
+          </Link>
+          <Link href="/myaccount/addresses">
+            <DropdownMenuItem>My Addresses</DropdownMenuItem>
+          </Link>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem
-          onClick={() => {
-            signOut();
+          onClick={async () => {
+            await signOut();
           }}
         >
           Log out
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
@@ -72,7 +66,6 @@ export const UserDropdown = () => {
 };
 
 const NoUserDropdown = () => {
-  const router = useRouter();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -89,13 +82,11 @@ const NoUserDropdown = () => {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem
-          onClick={() => {
-            router.push("/myaccount/login");
-          }}
-        >
-          Sign in <ArrowRightCircle size={16} className="ml-auto" />
-        </DropdownMenuItem>
+        <Link href="/myaccount/login">
+          <DropdownMenuItem>
+            Sign in <ArrowRightCircle size={16} className="ml-auto" />
+          </DropdownMenuItem>
+        </Link>
       </DropdownMenuContent>
     </DropdownMenu>
   );
