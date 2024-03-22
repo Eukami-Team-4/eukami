@@ -1,0 +1,32 @@
+
+
+const MyOrdersInDetail = () => {
+    return (
+        <div className="container p-4 mx-auto bg-white">
+           
+
+        <div className="p-4 bg-white">
+            <div className="mb-4">
+                <h3 className="mb-2 font-semibold">Order Status</h3>
+                <div className="space-y-2">
+                    <div><input type="checkbox" id="shipped"/> <label htmlFor="shipped">Shipped</label></div>
+                    <div><input type="checkbox" id="delivered"/> <label htmlFor="delivered">Delivered</label></div>
+                    <div><input type="checkbox" id="cancelled"/> <label htmlFor="cancelled">Cancelled</label></div>
+                </div>
+            </div>
+        </div>
+            
+        <h3 className="mb-2 font-semibold">Order Time</h3>
+        <div className="space-y-2">
+            <div><input type="checkbox" id="last30days"/><label htmlFor="last30days" className="ml-2">Last 30 days</label></div>
+            <div><input type="checkbox" id="last3months"/><label htmlFor="last3months" className="ml-2">Last 3 months</label></div>
+            <div><input type="checkbox" id="year2023"/><label htmlFor="year2023" className="ml-2">2023</label></div>
+            <div><input type="checkbox" id="year2022"/><label htmlFor="year2022" className="ml-2">2022</label></div>
+        </div>
+
+            <div className=""></div>
+        </div>
+    );
+};
+    
+export default MyOrdersInDetail;
