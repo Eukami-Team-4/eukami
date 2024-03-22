@@ -43,6 +43,7 @@ const createProductSchema = z.object({
     message: "Name must be at least 2 characters.",
   }),
   description: z.string().optional(),
+  features: z.string().optional(),
   collection_id: z.coerce.number().optional(),
   availableForSale: z.coerce.boolean(),
   price: z.coerce.number().optional(),
@@ -57,6 +58,7 @@ export default function CreateProductForm({ onSubmit, success, error }) {
     defaultValues: {
       name: "",
       description: "",
+      features:"",
       availableForSale: true,
       price: 0,
       images: [],
@@ -111,6 +113,23 @@ export default function CreateProductForm({ onSubmit, success, error }) {
               <FormControl>
                 <Textarea
                   placeholder="Description"
+                  className="resize-none"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="features"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Product Features</FormLabel>
+              <FormControl>
+                <Textarea
+                  placeholder="Features"
                   className="resize-none"
                   {...field}
                 />
