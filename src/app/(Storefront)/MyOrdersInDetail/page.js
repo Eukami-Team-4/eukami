@@ -9,16 +9,16 @@ const MyOrdersInDetail = () => {
             </div>
             <div className="w-auto h-40 pl-2 border-b border-slate-300">
                 <p className="font-semibold">Order Status</p>
-                <p classname ="">shipped</p>
-                <p classname ="mt-4">delivered</p>
-                <p classname ="mt-4">cancelled</p>
+                <p className ="mt-4 ml-2">shipped</p>
+                <p className ="mt-4 ml-2">delivered</p>
+                <p className ="mt-4 ml-2">cancelled</p>
             </div>
             <div className="pl-2">
             <p className="font-semibold">Order Time</p>
-                <p classname ="">Last 30 days</p>
-                <p classname ="mt-4">Last 3 months</p>
-                <p classname ="mt-4">2023</p>
-                <p classname ="mt-4">2022</p>
+                <p className ="mt-4 ml-2">Last 30 days</p>
+                <p className ="mt-4 ml-2">Last 3 months</p>
+                <p className ="mt-4 ml-2">2023</p>
+                <p className ="mt-4 ml-2">2022</p>
             </div>
           </div>
             
