@@ -4,7 +4,11 @@ const AboutUs= () => {
         <div className="bg-[#0C233B] text-white text-center"> 
         <div className="relative w-full h-[600px]">
         <Image
+<<<<<<< Updated upstream
             src="/images/hp1.png" 
+=======
+            src="/images/aboutusimage1.png" 
+>>>>>>> Stashed changes
             fill
             alt="Man with Headphones"
             className="object-cover"
