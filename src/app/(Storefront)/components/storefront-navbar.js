@@ -1,6 +1,7 @@
 "use client"
 import Cart from "@/app/(Storefront)/cart/cart";
 import MainNav from "@/app/(Storefront)/components/main-nav";
+import { UserDropdown } from "@/app/(Storefront)/components/user-dropdown";
 import Logo from "@/components/logo";
 import { Menu, ShoppingCart } from "lucide-react";
 import Link from "next/link";
@@ -20,7 +21,8 @@ export function Navbar() {
         <div className="hidden md:block">
           <MainNav />
         </div>
-        <div>
+        <div className="flex gap-3">
+          <UserDropdown></UserDropdown>
           <Cart></Cart>
         </div>
       </div>
