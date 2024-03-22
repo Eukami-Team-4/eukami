@@ -53,6 +53,9 @@ export const UserDropdown = () => {
           <DropdownMenuItem onSelect={() => router.push("/myaccount/orders")}>
             My Orders
           </DropdownMenuItem>
+          <DropdownMenuItem onSelect={() => router.push("/myaccount/addresses")}>
+            My Addresses
+          </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem

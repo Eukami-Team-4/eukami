@@ -1,8 +1,6 @@
 "use client";
-// create a context to wrap around the app so that i can check if the user is logged in or not and perform simple actions like logging out
-
+import { login, signout, signup } from "@/lib/supabase/auth-actions";
 import { createClient } from "@/lib/supabase/client";
-import { set } from "date-fns";
 import { useRouter } from "next/navigation";
 import {
   createContext,
@@ -11,11 +9,15 @@ import {
   useEffect,
   useState,
 } from "react";
+import { toast } from "sonner";
 
 export const AuthContext = createContext(undefined);
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
   return context;
 };
 
@@ -58,27 +60,45 @@ export const AuthProvider = ({ children }) => {
 
   const signIn = useCallback(
     async ({ email, password }) => {
-      const { error } = await supabase.auth.signIn({ email, password });
-      if (error) throw error;
+      try {
+        const { user, session } = await login({ email, password });
+        setUser(user);
+        setSession(session);
+        toast("Welcome back!", "success");
+      } catch (error) {
+        toast(error.message || error, "error");
+      }
       router.push("/myaccount");
     },
-    [router, supabase.auth]
+    [router]
   );
 
   const signUp = useCallback(
     async ({ email, password }) => {
-      const { error } = await supabase.auth.signUp({ email, password });
-      if (error) throw error;
+      try {
+        const { user, session } = await signup({ email, password });
+        setUser(user);
+        setSession(session);
+        toast("Account Created Successfully", "success");
+      } catch (error) {
+        toast(error.message || error, "error");
+      }
       router.push("/myaccount");
     },
-    [router, supabase.auth]
+    [router]
   );
 
   const signOut = useCallback(async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) throw error;
+    try {
+      await signout();
+      toast("Signed out successfully", "success");
+      setUser(null);
+      setSession(null);
+    } catch (error) {
+      toast(error.message || error, "error");
+    }
     router.push("/");
-  }, [router, supabase.auth]);
+  }, [router]);
 
   return (
     <AuthContext.Provider
