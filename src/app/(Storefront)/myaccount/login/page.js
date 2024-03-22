@@ -55,7 +55,7 @@ export default function Login() {
             <Button
               variant="link"
               type="button"
-              onClick={() => router.push("/admin/sign-up")}
+              onClick={() => router.push("/myaccount/sign-up")}
             >
               Sign up
             </Button>
