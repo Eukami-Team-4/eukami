@@ -31,12 +31,12 @@ export const ProductInfo = ({ product }) => {
     };
     return (
         <section className="container relative flex flex-col items-center justify-between h-full gap-12 py-8 rounded-lg lg:flex-row">
-            <div className="relative flex items-center justify-center w-full p-8 aspect-square lg:w-1/2 max-h-96">
+            <div className="relative flex items-center justify-center w-full p-8 bg-white rounded-lg aspect-square lg:w-1/2 max-h-[500px]">
                 <Image
                     src={product.images[0]?.publicUrl}
                     fill
                     sizes="100% 100%"
-                    className="object-contain rounded-lg lg:h-72"
+                    className="object-contain rounded-lg"
                     alt={product.name}
                 ></Image>
             </div>

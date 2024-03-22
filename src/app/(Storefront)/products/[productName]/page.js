@@ -19,16 +19,12 @@ const Sampleproduct = {
 
 const ProductDetailsPage = async ({ params }) => {
   const products = await getProducts();
-  //params product must exist in products
-  console.log(
-    decodeURI(params.productName),
-    products.map((product) => product.name)
-  );
 
   //params.productName comes in URL format so we have to convert it to a normalised format
   const product = products.find(
     (product) =>
-      product.name.toLowerCase() === decodeURI(params.productName).toLowerCase()
+      product.name.toLowerCase().trim() ===
+      decodeURI(params.productName).toLowerCase().trim()
   );
 
   if (!product) {
@@ -63,14 +59,11 @@ const ProductFeatures = ({ product }) => {
 
 const ProductImageGrid = ({ product }) => {
   return (
-    <section className="container lg:flex flex-col lg:flex-row lg:h-[40rem]">
-      {product?.images?.slice(0, 3).map((image, i) => (
-        <div
-          key={i}
-          className="relative flex-1 w-full rounded-lg h-96 lg:h-full"
-        >
+    <section className="container flex-col flex-wrap gap-6 lg:flex lg:flex-row">
+      {product?.images?.map((image, i) => (
+        <div key={i} className="relative bg-white rounded-lg w-96 h-96">
           <Image
-            className="object-cover rounded-lg"
+            className="object-contain rounded-lg"
             src={image.publicUrl}
             fill
             alt=""

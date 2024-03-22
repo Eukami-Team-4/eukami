@@ -37,25 +37,6 @@ export const AuthProvider = ({ children }) => {
       setLoading(false);
     }
     fetchData();
-  }, [supabase.auth]);
-
-  useEffect(() => {
-    const { data } = supabase.auth.onAuthStateChange((event, session) => {
-      if (event === "SIGNED_IN") {
-        setSession(session);
-        setUser(session.user);
-      }
-      if (event === "SIGNED_OUT") {
-        setSession(null);
-        setUser(null);
-      } else if (session) {
-        setSession(session);
-        setUser(session.user);
-      }
-    });
-    return () => {
-      data.subscription.unsubscribe();
-    };
   }, []);
 
   const signIn = useCallback(

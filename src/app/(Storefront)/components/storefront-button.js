@@ -9,7 +9,7 @@ const StorefrontButton = React.forwardRef(
         const router = useRouter();
         function handleClick(e) {
             if (!href) return;
-            router.push(href);
+            router.push(href.toLowerCase().trim());
         }
         return (
             <Button

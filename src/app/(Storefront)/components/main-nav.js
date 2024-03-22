@@ -14,6 +14,9 @@ const StorefrontRoutes = [
         name: "Earphones", href: '/collections/earphones',
     },
     {
+        name: "About Us", href: '/aboutus',
+    },
+    {
         name: "Contact", href: '/contact',
     },
 ]
