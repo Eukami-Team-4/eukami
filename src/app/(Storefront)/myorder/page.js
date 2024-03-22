@@ -1,5 +1,4 @@
 
-
 const MyOrder = () => {
     return (
         <div className="container p-4 mx-auto bg-white">
@@ -27,7 +26,14 @@ const MyOrder = () => {
             <div><input type="checkbox" id="year2022"/><label htmlFor="year2022" className="ml-2">2022</label></div>
         </div>
 
-            <div className=""></div>
+        <div className="pb-4 mb-4 border-b">
+            <h3 className="mb-2 font-semibold"> Headphones 121</h3>
+            <p className="text-gray-400">Colour:Black </p>
+            <p className="text-gray-400"> Quantity: 1</p>
+            <p className="font-semibold">£200</p>
+            <p>Delivered on Mar 1, 2024</p>
+            <p>Your item has been delivered</p>
+        </div>
         </div>
     );
 };
