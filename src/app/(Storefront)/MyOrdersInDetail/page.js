@@ -9,16 +9,30 @@ const MyOrdersInDetail = () => {
             </div>
             <div className="w-auto h-40 pl-2 border-b border-slate-300">
                 <p className="font-semibold">Order Status</p>
-                <p className ="mt-4 ml-2 cursor-pointer hover:underline">Shipped</p>
-                <p className ="mt-4 ml-2 cursor-pointer hover:underline">Delivered</p>
-                <p className ="mt-4 ml-2 cursor-pointer hover:underline">Cancelled</p>
+                <p className ="mt-4 ml-2">
+                <input type="checkbox" id="shipped"/> <label className="cursor-pointer" htmlFor="shipped">Shipped</label>
+                </p>
+                <p className ="mt-4 ml-2">
+                <input type="checkbox" id="delivered"/> <label className="cursor-pointer" htmlFor="delivered">Delivered</label>
+                </p>
+                <p className ="mt-4 ml-2">
+                <input type="checkbox" id="cancelled"/> <label className="cursor-pointer" htmlFor="cancelled">Cancelled</label>
+                </p>
             </div>
             <div className="pl-2">
             <p className="font-semibold">Order Time</p>
-                <p className ="mt-4 ml-2 cursor-pointer hover:underline">Last 30 days</p>
-                <p className ="mt-4 ml-2 cursor-pointer hover:underline">Last 3 months</p>
-                <p className ="mt-4 ml-2 cursor-pointer hover:underline">2023</p>
-                <p className ="mt-4 ml-2 cursor-pointer hover:underline">2022</p>
+                <p className ="mt-4 ml-2">
+                <input type="checkbox" id="last30days"/><label htmlFor="last30days" className="ml-2 cursor-pointer">Last 30 days</label>
+                </p>
+                <p className ="mt-4 ml-2">
+                <input type="checkbox" id="last3months"/><label htmlFor="last3months" className="ml-2 cursor-pointer">Last 3 months</label>
+                </p>
+                <p className ="mt-4 ml-2">
+                <input type="checkbox" id="year2023"/><label htmlFor="year2023" className="ml-2 cursor-pointer">2023</label>
+                </p>
+                <p className ="mt-4 ml-2">
+                <input type="checkbox" id="year2022"/><label htmlFor="year2022" className="ml-2 cursor-pointer">2022</label>
+                </p>
             </div>
           </div>
             
