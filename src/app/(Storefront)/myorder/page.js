@@ -28,7 +28,7 @@ const MyOrders = () => {
             
         </div>
         
-        <div className="flex justify-end w-4/5 h-auto">
+        <div className="flex justify-end w-4/5 h-2">
           <Input type="search" placeholder="Enter the item you're searching for"/>
           <Button className="ml-2">Search</Button>
         </div>
@@ -36,7 +36,7 @@ const MyOrders = () => {
         
       </div>
       
-      
+      {/** Order details */}
       <div className="justify-end flex-grow w-4/5 p-6 bg-white">
         <h2 className="pb-4 text-xl font-semibold border-b">My Orders</h2>
         <div className="flex items-center justify-between mt-6 bg-white ">
@@ -60,7 +60,7 @@ const MyOrders = () => {
 
           
           <div className="w-1/4 p-2 bg-white">
-            <p className="text-sm text-green-600">Delivered on Mar 1, 2024.</p>
+            <p className="text-sm text-gray-500">Delivered on Mar 1, 2024.</p>
             <p className="text-xs text-gray-500">Your item has been delivered.</p>
           </div>
         </div>
