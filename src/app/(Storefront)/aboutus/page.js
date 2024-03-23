@@ -21,7 +21,7 @@ const AboutUs = () => {
         
       <div className="mb-20">
         <h2 className="pt-20 text-5xl font-[650] text-center pb-9 ">OUR STORY</h2>
-        <p className="mb-2 leading-relaxed text-center px-14">
+        <p className="mb-2 font-normal leading-relaxed text-center px-14">
 
         Established in 1999 by a group of young adults, EUKAMI began with a simple mission: to create audio equipment that exceeds the ordinary listening experience. 
             
@@ -36,7 +36,7 @@ const AboutUs = () => {
 
       </div>
 
-      <div className=" bg-[#0C233B] relative object-cover w-full h-full p-8 overflow-hidden">
+      <div className=" bg-[#0C233B] object-cover w-full h-full p-8 overflow-hidden">
             <Image
                 src="/images/aboutusimage2.jpg"
                 alt="Audio Studio"
@@ -47,23 +47,30 @@ const AboutUs = () => {
         </div>
       
 
-      <div>
-        <h2>
+      <div className=" my-11">
+        <h2 className="pb-3 text-2xl text-center">
             Join our list
         </h2>
 
-        <p>
+        <p className="pb-3 font-medium text-center">
             Keep up to date with our newest releases, collaborations and more
         </p>
-        <div className="w-72">
+        <div className="w-full pb-3 px-80 ">
           <Input type="email" placeholder="Enter your email address"/>
         </div>
         
+        <div className="flex justify-center grid-flow-row gap-1 pb-3 text-sm font-medium">
+        <Checkbox/>
+        I want to receive emails containing EUKAMI product updates, special offers and occasional survey invitations.
       </div>
-      <Checkbox>
-        
-      </Checkbox>
-      <Button>Sign up</Button>
+      
+      <div className="w-full text-center">
+        <Button>Sign up</Button>
+      </div>
+      
+
+      </div>
+      
     </div>
   );
 };
