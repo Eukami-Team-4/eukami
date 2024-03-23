@@ -24,7 +24,7 @@ const MyOrdersInDetail = () => {
             
 
             <div className="mt-5 basis-4/5">
-                <div className="ml-8 uppercase"> <span className="font-semibold ">Order ID:</span> 123456789
+                <div className="ml-8 uppercase text-onyx"> <span className="font-semibold">Order ID:</span> 123456789
                 </div>
                 
                 <div className="grid w-auto h-64 grid-cols-3 mb-1 ml-5 mr-10 overflow-hidden bg-antiFlashWhite pb rounded-xl">
