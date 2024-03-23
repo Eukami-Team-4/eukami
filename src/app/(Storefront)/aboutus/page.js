@@ -1,9 +1,11 @@
 import Image from "next/image";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 const AboutUs = () => {
   return (
     <div>
-      <div className="bg-[#0C233B] w-full h-124 place-items-center">
-        <div className="relative object-cover w-11/12 h-64 overflow-hidden">
+        <div className=" bg-[#0C233B] relative object-cover w-full h-full p-8 overflow-hidden">
             <Image
                 src="/images/aboutusimage1.jpg"
                 alt="Man with Headphones"
@@ -12,9 +14,8 @@ const AboutUs = () => {
                 height={300}
             ></Image>
         </div>
-      </div>
       
-       <div className="bg-[#0C233B] text-white text-center h-20 pt-5 text-lg"> Welcome to EUKAMI, where our passion for flawless audio meets innovative
+       <div className="bg-[#0C233B] text-white text-center h-20 text-lg"> Welcome to EUKAMI, where our passion for flawless audio meets innovative
         design to provide you with a unique sound experience. </div>
 
         
@@ -35,8 +36,7 @@ const AboutUs = () => {
 
       </div>
 
-      <div className="bg-[#0C233B] w-full h-124 place-items-center mb-10">
-        <div className="relative object-cover w-11/12 overflow-hidden h-120">
+      <div className=" bg-[#0C233B] relative object-cover w-full h-full p-8 overflow-hidden">
             <Image
                 src="/images/aboutusimage2.jpg"
                 alt="Audio Studio"
@@ -45,20 +45,25 @@ const AboutUs = () => {
                 height={300}
             ></Image>
         </div>
-      </div>
+      
 
       <div>
         <h2>
-
+            Join our list
         </h2>
 
         <p>
-            
+            Keep up to date with our newest releases, collaborations and more
         </p>
-
+        <div className="w-72">
+          <Input type="email" placeholder="Enter your email address"/>
+        </div>
         
       </div>
-
+      <Checkbox>
+        
+      </Checkbox>
+      <Button>Sign up</Button>
     </div>
   );
 };
