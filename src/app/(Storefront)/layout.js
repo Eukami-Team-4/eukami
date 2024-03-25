@@ -1,4 +1,4 @@
-import { CartProvider } from "@/app/(Storefront)/cart/cart-context";
+
 import { Footer } from "@/app/(Storefront)/components/storefront-footer";
 import { Navbar } from "@/app/(Storefront)/components/storefront-navbar";
 import { Badge } from "@/components/ui/badge";
@@ -7,6 +7,7 @@ import Link from "next/link";
 import { StoreProvider } from "../_context/store-context";
 import { ThemeProvider } from "@/app/admin/components/theme-provider";
 import { AuthProvider } from "@/app/_context/auth-context";
+import { CartProvider } from "./cart/cart-context";
 
 export default function Layout({ children }) {
   return (

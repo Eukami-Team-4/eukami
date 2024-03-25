@@ -1,11 +1,10 @@
 "use client"
-import Cart from "@/app/(Storefront)/cart/cart";
+import CartDialog from "@/app/(Storefront)/cart/cart";
 import MainNav from "@/app/(Storefront)/components/main-nav";
 import { UserDropdown } from "@/app/(Storefront)/components/user-dropdown";
 import Logo from "@/components/logo";
-import { Menu, ShoppingCart } from "lucide-react";
+import { Menu } from "lucide-react";
 import Link from "next/link";
-import { toast } from "sonner";
 
 
 export function Navbar() {
@@ -23,7 +22,7 @@ export function Navbar() {
         </div>
         <div className="flex gap-3">
           <UserDropdown></UserDropdown>
-          <Cart></Cart>
+          <CartDialog></CartDialog>
         </div>
       </div>
     </div>

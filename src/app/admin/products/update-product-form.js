@@ -44,6 +44,7 @@ const updateProductSchema = z.object({
     message: "Name must be at least 2 characters.",
   }),
   description: z.string().optional(),
+  features: z.string().optional(),
   collection_id: z.coerce.number().optional(),
   availableForSale: z.coerce.boolean(),
   price: z.coerce.number().optional(),
@@ -57,6 +58,7 @@ export default function UpdateProductForm({ onSubmit, product }) {
     defaultValues: {
       name: product.name || "",
       description: product.description || "",
+      features: product.features || "",
       collection_id: product.collection_id
         ? product.collection_id.toString()
         : undefined,
@@ -117,6 +119,23 @@ export default function UpdateProductForm({ onSubmit, product }) {
               <FormControl>
                 <Textarea
                   placeholder="Description"
+                  className="resize-none"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="features"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Product Features</FormLabel>
+              <FormControl>
+                <Textarea
+                  placeholder="Write some features of the product here..."
                   className="resize-none"
                   {...field}
                 />

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
-export const revalidate = 60 * 5 // revalidate at most every 5 minutes
+export const revalidate = 60 * 60 // revalidate at most every 60 minutes
 
 const CollectionPage = async ({ params }) => {
     const collections = await getCollections()
@@ -16,15 +16,13 @@ const CollectionPage = async ({ params }) => {
         (collection) => collection.name.toLowerCase() === params.collectionName
     );
 
+    if (!collection) {
+        return <div>Collection not found</div>;
+    }
     //filter only products that belong to the collection
     const collectionProducts = products.filter(
         (product) => product.collection_id === collection.id
     );
-
-    if (!collection) {
-        redirect("/");
-    }
-    
     return (
         <main className="pb-16 space-y-16">
             <section className="flex items-center justify-center w-full h-40 text-4xl font-medium uppercase bg-indigoDye text-seasalt">
@@ -45,7 +43,7 @@ const CollectionPage = async ({ params }) => {
     );
 };
 
-const ProductCard = ({ product, reversed, collectionName }) => {
+const ProductCard = ({ product, reversed }) => {
     return (
         <section
             className={cn(
@@ -60,7 +58,7 @@ const ProductCard = ({ product, reversed, collectionName }) => {
                     </h3>
                 )}
                 <h1 className="text-5xl uppercase text-indigoDye">
-                    {collectionName} {product.name}
+                    {product.name}
                 </h1>
                 <p className="text-onyx">{product.description}</p>
                 <div>

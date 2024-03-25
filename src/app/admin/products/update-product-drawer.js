@@ -22,7 +22,7 @@ const UpdateProductDrawer = ({ children, product, open, setOpen}) => {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetContent
-        className="flex flex-col justify-between w-screen "
+        className="flex flex-col justify-between w-screen h-[80vh]"
         side={"bottom"}
       >
         <SheetHeader>
@@ -31,7 +31,7 @@ const UpdateProductDrawer = ({ children, product, open, setOpen}) => {
             Use this form to edit the product details
           </SheetDescription>
         </SheetHeader>
-        <ScrollArea className="flex-1 h-dvh">
+        <ScrollArea className="flex-1">
           <div className="flex-1">
             <UpdateProductForm onSubmit={onSubmit} product={product}></UpdateProductForm>
           </div>

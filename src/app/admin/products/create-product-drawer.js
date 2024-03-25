@@ -32,7 +32,7 @@ const CreateProductDrawer = ({ children }) => {
         )}
       </SheetTrigger>
       <SheetContent
-        className="flex flex-col justify-between w-screen "
+        className="flex flex-col justify-between w-screen h-[80vh]"
         side={"bottom"}
       >
         <SheetHeader>
@@ -41,7 +41,7 @@ const CreateProductDrawer = ({ children }) => {
             Use this form to add a new product to the database
           </SheetDescription>
         </SheetHeader>
-        <ScrollArea className="flex-1 h-dvh">
+        <ScrollArea className="flex-1">
           <div className="flex-1">
             <CreateProductForm onSubmit={onSubmit}></CreateProductForm>
           </div>

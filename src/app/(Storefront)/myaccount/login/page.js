@@ -11,11 +11,10 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Login() {
-  const router = useRouter();
   const login = useSignIn();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -44,21 +43,19 @@ export default function Login() {
         </CardContent>
         <CardFooter className="flex flex-col items-center justify-center gap-3">
           <Button
-          type="button"
-            onClick={async () => await login({email, password})}
+            type="button"
+            onClick={async () => await login({ email, password })}
             className="w-full rounded-full"
           >
             Sign In
           </Button>
           <div className="flex flex-col items-center justify-center py-6">
             <p>Don&apos;t have an account?</p>
-            <Button
-              variant="link"
-              type="button"
-              onClick={() => router.push("/myaccount/sign-up")}
-            >
-              Sign up
-            </Button>
+            <Link href="/myaccount/sign-up">
+              <Button variant="link" type="button">
+                Sign up
+              </Button>
+            </Link>
           </div>
         </CardFooter>
       </Card>

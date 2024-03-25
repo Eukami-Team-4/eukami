@@ -90,7 +90,7 @@ export const StoreProvider = ({ children }) => {
     fetchCollections();
     fetchOrders();
     fetchCustomers();
-  }, []);
+  }, [fetchCollections, fetchCustomers, fetchOrders, fetchProducts]);
 
   return (
     <StoreContext.Provider value={store}>{children}</StoreContext.Provider>

@@ -4,7 +4,7 @@ import { FeaturedProducts } from "./FeaturedProducts";
 import { Hero } from "./Hero";
 
 const HeroProduct = {
-  name: "XX99 studio pro noir I Headphones",
+  name: "XX99 studio pro noir I",
   images: [
     {
       publicUrl:
