@@ -7,16 +7,18 @@ import { formatCurrency } from "@/lib/format-currency";
 import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useCheckout } from "../checkout/checkout-context";
 import { QuantitySelector } from "../components/quantity-selector";
 import { useCart } from "./cart-context";
-import { createNewCheckout, getExistingCheckout } from "../checkout/actions";
-import { toast } from "sonner";
 
 const CartDialog = () => {
   const router = useRouter();
+  const CheckoutContext = useCheckout();
   const CartContext = useCart();
   if (!CartContext) return null;
   const { cart, dispatch } = CartContext;
+  if (!CheckoutContext) return null;
+  const { checkout, handleCheckout } = CheckoutContext;
 
   function handleChangeQuantity(lineItem: CartItem, quantity: number) {
     lineItem.quantity = quantity;
@@ -29,26 +31,6 @@ const CartDialog = () => {
 
   function handleClearCart() {
     dispatch({ type: "CLEAR_CART", payload: cart.lineItems[0] });
-  }
-
-  async function handleCheckout() {
-    if (cart.checkoutUrl) {
-      const existingCheckout = await getExistingCheckout(cart.checkoutUrl);
-      if (existingCheckout) {
-        router.push(`/checkout/${cart.checkoutUrl}`);
-        return;
-      }
-    }
-    try {
-      const checkout = await createNewCheckout(cart);
-      if (!checkout) {
-        toast.error("Failed to create checkout from the current cart items");
-        return;
-      }
-      router.push(`/checkout/${checkout.checkoutUrl}`);
-    } catch (error) {
-      toast.error("Failed to create checkout");
-    }
   }
 
   return (
@@ -137,7 +119,14 @@ const CartDialog = () => {
               </div>
 
               <DialogTrigger asChild>
-                <StorefrontButton onClick={async () => await handleCheckout()}>
+                <StorefrontButton
+                  onClick={async () => {
+                    await handleCheckout(cart);
+                    if (checkout.checkoutUrl) {
+                      router.push(checkout.checkoutUrl);
+                    }
+                  }}
+                >
                   Checkout
                 </StorefrontButton>
               </DialogTrigger>

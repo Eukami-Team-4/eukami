@@ -1,4 +1,3 @@
-
 import { Footer } from "@/app/(Storefront)/components/storefront-footer";
 import { Navbar } from "@/app/(Storefront)/components/storefront-navbar";
 import { Badge } from "@/components/ui/badge";
@@ -8,6 +7,7 @@ import { StoreProvider } from "../_context/store-context";
 import { ThemeProvider } from "@/app/admin/components/theme-provider";
 import { AuthProvider } from "@/app/_context/auth-context";
 import { CartProvider } from "./cart/cart-context";
+import { CheckoutProvider } from "@/app/(Storefront)/checkout/checkout-context";
 
 export default function Layout({ children }) {
   return (
@@ -32,9 +32,11 @@ export default function Layout({ children }) {
           </div>
           <StoreProvider>
             <CartProvider>
-              <Navbar />
-              <div className="flex-1">{children}</div>
-              <Footer />
+              <CheckoutProvider>
+                <Navbar />
+                <div className="flex-1">{children}</div>
+                <Footer />
+              </CheckoutProvider>
             </CartProvider>
           </StoreProvider>
         </div>

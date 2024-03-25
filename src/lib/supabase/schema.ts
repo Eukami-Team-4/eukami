@@ -1,5 +1,6 @@
 import { MergeDeep } from "type-fest";
 import { Database as DatabaseGenerated } from "./generated_types";
+import { CartItem } from "@/app/(Storefront)/cart/cart-context";
 export type { Json } from "./generated_types";
 
 // Override the type for a specific column in a view:
@@ -37,5 +38,15 @@ export type ProductVariant = MergeDeep<
 
 export type Checkout = MergeDeep<
   Database["Eukami_v1"]["Tables"]["Checkout"]["Row"],
-  {}
+  {
+    lineItems: Array<CartItem>;
+  }
 >;
+
+export type Order = MergeDeep<
+  Database["Eukami_v1"]["Tables"]["Order"]["Row"],
+  {
+    lineItems: Array<CartItem>;
+  }>
+
+
