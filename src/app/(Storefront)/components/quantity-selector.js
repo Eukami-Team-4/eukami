@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 
 
-export const QuantitySelector = ({ quantity, setQuantity, size ="md", className }) => {
+export const QuantitySelector = ({ quantity, setQuantity, size ="md", className="" }) => {
     if (size === "sm") {
         return (
             <div className={cn("flex bg-antiFlashWhite", className)}>
