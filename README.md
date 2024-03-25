@@ -87,4 +87,16 @@ A frontend Cloud platform, which maintains the EUKAMI website framework.
 During this team project module, we have learnt to effectively work as a team, solve disputes, identify issues within the project and allocate task to team members which best fits their strengths.
 In terms of technical skills, software tools were learnt such as html, CSS, JavaScript, MYSQL and Git + GitHub in order to develop the EUKAMI website. 
 
+## Getting Started
+
+To get started with this project, clone the repository and install the dependencies:
+
+```bash
+git clone <repository-url>
+cd <repository-name>
+npm install
+npm run dev //to run this on your local machine
+```
+> Note you will also need to create the environment variables in env.local 
+
 
