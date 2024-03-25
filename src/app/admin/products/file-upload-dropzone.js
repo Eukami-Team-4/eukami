@@ -49,9 +49,9 @@ const FileUploadDropzone = ({ multiple = "false", images, setImages }) => {
     } catch (error) {
       toast.error("Failed to upload image:", error);
     }
-  }, []);
+  }, [handleFileUpload]);
 
-  function handleFileUpload(newFiles = []) {
+  const handleFileUpload = useCallback((newFiles = []) => {
     newFiles.forEach(async (file) => {
       const res = await uploadImage(file);
       if (res) {
@@ -73,7 +73,7 @@ const FileUploadDropzone = ({ multiple = "false", images, setImages }) => {
         }
       }
     });
-  }
+  }, [setImages]);
 
   const handleChange = (event) => {
     if (!event.target.files || event.target.files.length == 0) {
@@ -101,7 +101,7 @@ const FileUploadDropzone = ({ multiple = "false", images, setImages }) => {
       setFiles(images);
       setInitialImagesLoaded(true);
     }
-  }, []);
+  }, [images, initialImagesLoaded]);
 
   // Render file names or previews
   const renderImagePreviews = files.map(
