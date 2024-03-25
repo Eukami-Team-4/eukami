@@ -99,7 +99,12 @@ npm run dev //to run this on your local machine
 ```
 > Note you will also need to create the environment variables in env.local
 >
-> <img width="1470" alt="image" src="https://github.com/Eukami-Team-4/eukami/assets/116498504/c4eb09f0-e8b5-4937-8264-9be908eee4a5">
+> ## Main Page
+> The main page contains an example of how a product is shown within our website, which will allow a new user to develop an understanding of how the EUKAMI website is represented. 
+<img width="1470" alt="image" src="https://github.com/Eukami-Team-4/eukami/assets/116498504/c4eb09f0-e8b5-4937-8264-9be908eee4a5">
+<img width="1470" alt="image" src="https://github.com/Eukami-Team-4/eukami/assets/116498504/5e27cd6c-d8c0-44ee-b5ee-e4438aaf2872">
+
+
 
 
 
