@@ -53,7 +53,7 @@ const AboutUs = () => {
         <p className="pb-3 font-medium text-center">
             Keep up to date with our newest releases, collaborations and more
         </p>
-        <div className="w-full pb-3 px-80 ">
+        <div className="w-full pb-3 ">
           <Input type="email" placeholder="Enter your email address"/>
         </div>
         
