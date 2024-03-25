@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
       setLoading(false);
     }
     fetchData();
-  }, []);
+  }, [supabase.auth]);
 
   const signIn = useCallback(
     async ({ email, password }) => {
