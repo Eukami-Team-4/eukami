@@ -9,7 +9,6 @@ const AboutUs = () => {
             <Image
                 src="/images/aboutusimage1.jpg"
                 alt="Man with Headphones"
-                layout="responsive"
                 width={500}
                 height={300}
             ></Image>
@@ -40,7 +39,6 @@ const AboutUs = () => {
             <Image
                 src="/images/aboutusimage2.jpg"
                 alt="Audio Studio"
-                layout="responsive"
                 width={500}
                 height={300}
             ></Image>
