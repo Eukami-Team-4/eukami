@@ -99,10 +99,21 @@ npm run dev //to run this on your local machine
 ```
 > Note you will also need to create the environment variables in env.local
 >
-> ## Main Page
-> The main page contains an example of how a product is shown within our website, which will allow a new user to develop an understanding of how the EUKAMI website is represented. 
+## Main Page
+The main page contains an example of how a product is shown within our website, which will allow a new user to develop an understanding of how the EUKAMI website is represented. In addition, the page also shows various categories of products that users are able to browse and buy.   
 <img width="1470" alt="image" src="https://github.com/Eukami-Team-4/eukami/assets/116498504/c4eb09f0-e8b5-4937-8264-9be908eee4a5">
 <img width="1470" alt="image" src="https://github.com/Eukami-Team-4/eukami/assets/116498504/5e27cd6c-d8c0-44ee-b5ee-e4438aaf2872">
+
+## About Us
+The About Us page holds information on how EUKAMI was established. It also includes the purpose of why EUKAMI was created as well as a brief introduction to its history. 
+<img width="1470" alt="image" src="https://github.com/Eukami-Team-4/eukami/assets/116498504/a329f431-1da5-4934-885b-b925043c3946">
+
+## Headphones
+The Headphone page contains various high quailty headphones for purchase. 
+<img width="1470" alt="image" src="https://github.com/Eukami-Team-4/eukami/assets/116498504/69e8a659-9c4a-4fb5-98a3-1f81e00d9c01">
+
+
+
 
 
 
