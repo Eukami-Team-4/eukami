@@ -130,8 +130,23 @@ The earphone page gives a diverse number of exceptional Earphones customers can 
 
 <img width="1470" alt="image" src="https://github.com/Eukami-Team-4/eukami/assets/116498504/4a9ffce1-31b0-48d1-be63-e35559c0c666">
 
+## Contact Us 
 
+The Contact Us page allows customer to contact support if they experience any problems with the product, website, delivery or other inquiries.
 
+<img width="1470" alt="image" src="https://github.com/Eukami-Team-4/eukami/assets/116498504/42b0084d-691a-49c2-9d45-869f7312c1ef">
+
+## Sign in or Sign up
+
+This page allows customers to sign in or create an account if they haven't already. 
+
+<img width="1470" alt="image" src="https://github.com/Eukami-Team-4/eukami/assets/116498504/1dc83a82-c28e-4ea4-809f-8327a8aa6798">
+
+## Cart page 
+
+This page allows customers to checkout products once they decided 
+
+<img width="1470" alt="image" src="https://github.com/Eukami-Team-4/eukami/assets/116498504/1addadda-2656-4804-8276-cc194f380df2">
 
 
 
