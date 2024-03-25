@@ -33,24 +33,6 @@ const FileUploadDropzone = ({ multiple = "false", images, setImages }) => {
     [dragging]
   );
 
-  const handleDrop = useCallback((event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    setDragging(false);
-    const newFiles = Array.from(event.dataTransfer.files).map((file) =>
-      Object.assign(file, {
-        preview: URL.createObjectURL(file),
-      })
-    );
-    setFiles((prevFiles) => [...prevFiles, ...newFiles]);
-
-    try {
-      handleFileUpload(newFiles);
-    } catch (error) {
-      toast.error("Failed to upload image:", error);
-    }
-  }, [handleFileUpload]);
-
   const handleFileUpload = useCallback((newFiles = []) => {
     newFiles.forEach(async (file) => {
       const res = await uploadImage(file);
@@ -75,6 +57,24 @@ const FileUploadDropzone = ({ multiple = "false", images, setImages }) => {
     });
   }, [setImages]);
 
+  const handleDrop = useCallback((event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setDragging(false);
+    const newFiles = Array.from(event.dataTransfer.files).map((file) =>
+      Object.assign(file, {
+        preview: URL.createObjectURL(file),
+      })
+    );
+    setFiles((prevFiles) => [...prevFiles, ...newFiles]);
+
+    try {
+      handleFileUpload(newFiles);
+    } catch (error) {
+      toast.error("Failed to upload image:", error);
+    }
+  }, [handleFileUpload]);
+  
   const handleChange = (event) => {
     if (!event.target.files || event.target.files.length == 0) {
       throw "You must select an image to upload.";
