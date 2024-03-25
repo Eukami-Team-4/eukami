@@ -97,6 +97,10 @@ cd <repository-name>
 npm install
 npm run dev //to run this on your local machine
 ```
-> Note you will also need to create the environment variables in env.local 
+> Note you will also need to create the environment variables in env.local
+>
+> <img width="1470" alt="image" src="https://github.com/Eukami-Team-4/eukami/assets/116498504/c4eb09f0-e8b5-4937-8264-9be908eee4a5">
+
+
 
 
