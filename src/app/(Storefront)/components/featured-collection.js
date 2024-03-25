@@ -5,6 +5,9 @@ import Image from "next/image";
 export const FeaturedCollection = ({params}) => {
   return (
     <section className="container py-12">
+      <h2 className="py-3 text-3xl font-medium text-center uppercase">
+        Featured Collections
+      </h2>
       <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
         {featuredCollections.map((collection, index) => (
           <div key={index} className="relative rounded-md h-96">
@@ -50,5 +53,14 @@ export const featuredCollections = [
     name: "Speakers",
     image: "https://xbufnzihtjlgkfljttlv.supabase.co/storage/v1/object/public/images/speakers.png",
   },
+  {
+    name: "Accessories",
+    image:"https://xbufnzihtjlgkfljttlv.supabase.co/storage/v1/object/public/images/513493082.png?width=100&height=100"
+  },
+  {
+    name: "Limited Edition",
+    image:"https://xbufnzihtjlgkfljttlv.supabase.co/storage/v1/object/public/images/hero-image.png?t=2024-03-20T08%3A00%3A40.138Z"
+  }
+  
 ];
 

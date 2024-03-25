@@ -30,7 +30,7 @@ export default async function Layout({ children }) {
       <StoreProvider>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >

@@ -27,6 +27,12 @@ const ProductDetailsPage = async ({ params }) => {
       decodeURI(params.productName).toLowerCase().trim()
   );
 
+  //recommended should be 3 random products that are not the current product
+  const recommendedProducts = products
+    .filter((p) => p.name !== product.name)
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 3);
+
   if (!product) {
     // redirect("/");
     return <div>Product not found</div>;
@@ -39,7 +45,7 @@ const ProductDetailsPage = async ({ params }) => {
       <ProductInfo product={product} />
       <ProductFeatures product={product} />
       <ProductImageGrid product={product} />
-      <ProductRecommendations />
+      <ProductRecommendations recommendedProducts={recommendedProducts} />
       <FeaturedCollection />
       <UniqueSellingPoint />
     </main>
@@ -74,22 +80,7 @@ const ProductImageGrid = ({ product }) => {
   );
 };
 
-const recommendedProducts = [
-  {
-    name: "XX99 Mark I",
-    image: "/images/hp1.png",
-  },
-  {
-    name: "XX59",
-    image: "/images/hp2.png",
-  },
-  {
-    name: "ZX9 Speaker",
-    image: "/images/hp3.png",
-  },
-];
-
-const ProductRecommendations = () => {
+const ProductRecommendations = ({ recommendedProducts }) => {
   return (
     <section className="container py-16 space-y-16">
       <h2 className="py-3 text-3xl font-medium text-center uppercase">
@@ -105,11 +96,13 @@ const ProductRecommendations = () => {
               className="object-cover w-4/5 rounded-md aspect-square"
               width={300}
               height={300}
-              src={product.image}
+              src={product.images[0]?.publicUrl}
               alt={product.name}
             />
             <h3 className="text-lg font-medium uppercase">{product.name}</h3>
-            <StorefrontButton href="/products/1">See Product</StorefrontButton>
+            <StorefrontButton href={`/products/${product.name}`}>
+              See Product
+            </StorefrontButton>
           </div>
         ))}
       </div>
