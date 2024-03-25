@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 const StorefrontRoutes = [
-    {
-        name: "Shop", href: '/shop',
-    },
+    // {
+    //     name: "Shop", href: '/shop',
+    // },
     {
         name: "Headphones", href: '/collections/headphones',
     },
