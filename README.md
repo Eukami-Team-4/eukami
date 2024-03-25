@@ -1,3 +1,5 @@
+<img width="1470" alt="image" src="https://github.com/Eukami-Team-4/eukami/assets/22062705/3a8b93a0-6660-4537-8c9a-0cab0d36f0b5">
+
 # Team name
 EUKAMI
 
