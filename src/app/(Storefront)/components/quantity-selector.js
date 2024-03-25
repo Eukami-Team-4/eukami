@@ -8,7 +8,7 @@ export const QuantitySelector = ({ quantity, setQuantity, size ="md", className=
             <div className={cn("flex bg-antiFlashWhite", className)}>
                 <button
                     onClick={() => quantity > 1 ? setQuantity(quantity - 1) : null}
-                    className="w-8 h-8 text-xs bg-antiFlashWhite"
+                    className="w-8 h-8 text-xs bg-antiFlashWhite hover:bg-white"
                 >
                     -
                 </button>
@@ -17,7 +17,7 @@ export const QuantitySelector = ({ quantity, setQuantity, size ="md", className=
                 </div>
                 <button
                     onClick={() => setQuantity(quantity + 1)}
-                    className="w-8 h-8 text-xs bg-antiFlashWhite"
+                    className="w-8 h-8 text-xs bg-antiFlashWhite hover:bg-white"
                 >
                     +
                 </button>
@@ -28,7 +28,7 @@ export const QuantitySelector = ({ quantity, setQuantity, size ="md", className=
         <div className={cn("flex bg-antiFlashWhite", className)}>
             <button
                 onClick={() => quantity > 1 ? setQuantity(quantity - 1) : null}
-                className="w-12 h-12 text-sm bg-antiFlashWhite"
+                className="w-12 h-12 text-sm bg-antiFlashWhite hover:bg-white"
             >
                 -
             </button>
@@ -37,7 +37,7 @@ export const QuantitySelector = ({ quantity, setQuantity, size ="md", className=
             </div>
             <button
                 onClick={() => setQuantity(quantity + 1)}
-                className="w-12 h-12 text-sm bg-antiFlashWhite"
+                className="w-12 h-12 text-sm bg-antiFlashWhite hover:bg-white"
             >
                 +
             </button>
