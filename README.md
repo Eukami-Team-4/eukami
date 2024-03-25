@@ -143,7 +143,7 @@ This page allows customers to sign in or create an account if they haven't alrea
 
 ## Cart page 
 
-This page allows customers to checkout products once they decided 
+This page allows customers to finalise products purchase once they decided which product to buy. 
 
 <img width="1470" alt="image" src="https://github.com/Eukami-Team-4/eukami/assets/116498504/1addadda-2656-4804-8276-cc194f380df2">
 
