@@ -60,9 +60,9 @@ const ProfilePage = () => {
         updated_at: new Date().toISOString(),
       });
       if (error) throw error;
-      alert("Profile updated!");
+      toast.success("Profile updated!");
     } catch (error) {
-      alert("Error updating the data!");
+      toast.error("Error updating the data!");
     } finally {
       setLoading(false);
     }

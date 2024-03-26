@@ -1,13 +1,13 @@
-import Image from "next/image";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import Image from "next/image";
 const AboutUs = () => {
   return (
     <div>
         <div className=" bg-[#0C233B] relative object-cover w-full h-full p-8 overflow-hidden">
             <Image
-                src="/images/aboutusimage1.jpg"
+                src="https://xbufnzihtjlgkfljttlv.supabase.co/storage/v1/object/public/images/aboutusimage1.webp?t=2024-03-26T10%3A37%3A16.206Z"
                 alt="Man with Headphones"
                 width={500}
                 height={300}
@@ -37,7 +37,7 @@ const AboutUs = () => {
 
       <div className=" bg-[#0C233B] object-cover w-full h-full p-8 overflow-hidden">
             <Image
-                src="/images/aboutusimage2.jpg"
+                src="https://xbufnzihtjlgkfljttlv.supabase.co/storage/v1/object/public/images/aboutusimage2.webp?t=2024-03-26T10%3A37%3A23.807Z"
                 alt="Audio Studio"
                 width={500}
                 height={300}
