@@ -49,7 +49,7 @@ export const AuthProvider = ({ children }) => {
       } catch (error) {
         toast(error.message || error, "error");
       }
-      router.push("/myaccount");
+      router.push("/myaccount/profile");
     },
     [router]
   );
