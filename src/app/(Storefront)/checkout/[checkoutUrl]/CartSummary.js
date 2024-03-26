@@ -12,11 +12,12 @@ export const CartSummary = () => {
   const [message, setMessage] = useState("");
   const CheckoutContext = useCheckout();
   const CartContext = useCart();
+  const router = useRouter();
   if (!CartContext) return null;
   const { cart, dispatch } = CartContext;
   if (!CheckoutContext) return null;
   const { checkout, setCheckout, form } = CheckoutContext;
-  const router = useRouter();
+  
 
   async function handlePayment() {
     toast("performing payment...");

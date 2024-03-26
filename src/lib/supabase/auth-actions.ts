@@ -45,3 +45,17 @@ export async function signout() {
   }
   revalidatePath("/", "layout");
 }
+
+export async function forgotPassword(email: string) {
+  const supabase = createClient();
+  try {
+    const { data, error } = await supabase.auth.resetPasswordForEmail(
+      "user@email.com"
+    );
+    if (error) {
+      throw new Error(error.message);
+    }
+  } catch (error) {
+    throw error;
+  }
+}
