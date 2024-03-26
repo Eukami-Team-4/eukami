@@ -39,7 +39,8 @@ export const CartSummary = () => {
     await handlePayment();
     toast.success("Order placed successfully");
     dispatch({ type: "CLEAR_CART" });
-    router.push("/checkout/success");
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    router.push("/myaccount/orders");
   }
 
   async function handleCheckout() {
