@@ -1,5 +1,6 @@
 "use client";
 import { useCart } from "@/app/(Storefront)/cart/cart-context";
+import { createNewOrder } from "@/app/(Storefront)/checkout/actions";
 import { useCheckout } from "@/app/(Storefront)/checkout/checkout-context";
 import StorefrontButton from "@/app/(Storefront)/components/storefront-button";
 import { formatCurrency } from "@/lib/format-currency";
@@ -37,6 +38,20 @@ export const CartSummary = () => {
     toast(message);
     await validateCart();
     await handlePayment();
+    await createNewOrder({
+      customer_: {
+        email: values.email,
+        name: values.name,
+        phone: values.phone,
+      },
+      billing_address: {
+        city: values.city,
+        country: values.country,
+        line1: values.address,
+        postalCode: values.postalCode,
+      },
+      lineItems: checkout.lineItems
+    });
     toast.success("Order placed successfully");
     dispatch({ type: "CLEAR_CART" });
     await new Promise((resolve) => setTimeout(resolve, 500));
