@@ -51,6 +51,9 @@ export const UserDropdown = () => {
           <Link href="/myaccount/addresses">
             <DropdownMenuItem>My Addresses</DropdownMenuItem>
           </Link>
+          <Link href="/myaccount/saved-cards">
+            <DropdownMenuItem>My Saved Cards</DropdownMenuItem>
+          </Link>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem

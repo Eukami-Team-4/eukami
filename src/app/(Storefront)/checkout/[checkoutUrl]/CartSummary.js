@@ -27,7 +27,7 @@ export const CartSummary = () => {
   }
 
   async function validateCart() {
-    toast("validating cart...");
+    toast("checking product stock...");
     await new Promise((resolve) => setTimeout(resolve, 500));
     toast("cart validated");
   }
