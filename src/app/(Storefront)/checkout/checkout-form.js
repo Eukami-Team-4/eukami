@@ -1,5 +1,6 @@
 "use client";
 
+import { useCheckout } from "@/app/(Storefront)/checkout/checkout-context";
 import {
     Form,
     FormControl,
@@ -19,7 +20,6 @@ import { z } from "zod";
 // TODO: Confirm the things that need to be checked for each order before accepting it
 // TODO (optional): shpping and tracking status link / page
 
-
 // TODO: for now we define this in this form but this will be pulled from the database
 const DeliveryMethods = [
     {
@@ -32,10 +32,10 @@ const DeliveryMethods = [
         value: 'standard',
         price: 4.99
     }
-]
-
-// TODO: for now we define this in this form but this will be pulled from the database
-const PaymentMethods = [
+  ]
+  
+  // TODO: for now we define this in this form but this will be pulled from the database
+  const PaymentMethods = [
     {
         label: 'Debit Card',
         value: 'debit',
@@ -48,61 +48,19 @@ const PaymentMethods = [
         label: 'Paypal',
         value: 'paypal',
     }
-] 
+  ] 
+  
+const CheckoutForm = () => {
 
-const formSchema = z.object({
-    name: z.string().min(2, {
-        message: "Name must be at least 2 characters.",
-    }),
-    email: z.string(),
-    phone: z.string(),
-    address: z.string(),
-    city: z.string(),
-    state: z.string(),
-    zip: z.string(),
-    country: z.string(),
-    deliveryMethod: z.string(),
-    cardName: z.string(),
-    cardNumber: z.string(),
-    cardExpiry: z.string(),
-    cardCvc: z.string(),
-});
-
-const CheckoutForm = ({checkoutHandler=()=>{}, submit}) => {
-    // 1. Define your form.
-    const form = useForm({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            name: "",
-            email: "",
-            phone: "",
-            address: "",
-            city: "",
-            state: "",
-            zip: "",
-            country: "",
-            deliveryMethod: "standard",
-            cardName: "",
-            cardNumber: "",
-            cardExpiry: "",
-            cardCvc: "",
-        },
-    });
-
-    // 2. Define a submit handler.
-    function onSubmit(values) {
-        console.log(values);
-        checkoutHandler(values);
-    }
-
-    
+    const CheckoutContext = useCheckout();
+    const { form, deliveryMethod, setDeliveryMethod } = CheckoutContext;
 
     return (
         <div>
             <Form {...form}>
                 <form
                     id="checkout-form"
-                    onSubmit={form.handleSubmit(onSubmit)}
+                    // onSubmit={form.handleSubmit(onSubmit)}
                     className="space-y-8"
                 >
                     <div className="grid gap-3 lg:grid-cols-2">
@@ -152,7 +110,7 @@ const CheckoutForm = ({checkoutHandler=()=>{}, submit}) => {
                                     <FormControl>
                                         <Input
                                             type="phone"
-                                            placeholder="mail@mail.com"
+                                            placeholder="1234567890"
                                             {...field}
                                         />
                                     </FormControl>
@@ -172,7 +130,7 @@ const CheckoutForm = ({checkoutHandler=()=>{}, submit}) => {
                                     <FormControl>
                                         <Input
                                             type="address"
-                                            placeholder="mail@mail.com"
+                                            placeholder="1234 Main St"
                                             {...field}
                                         />
                                     </FormControl>
@@ -189,7 +147,7 @@ const CheckoutForm = ({checkoutHandler=()=>{}, submit}) => {
                                     <FormControl>
                                         <Input
                                             type="zip"
-                                            placeholder="mail@mail.com"
+                                            placeholder="12345"
                                             {...field}
                                         />
                                     </FormControl>
@@ -206,7 +164,7 @@ const CheckoutForm = ({checkoutHandler=()=>{}, submit}) => {
                                     <FormControl>
                                         <Input
                                             type="city"
-                                            placeholder="mail@mail.com"
+                                            placeholder="City"
                                             {...field}
                                         />
                                     </FormControl>
@@ -223,7 +181,7 @@ const CheckoutForm = ({checkoutHandler=()=>{}, submit}) => {
                                     <FormControl>
                                         <Input
                                             type="country"
-                                            placeholder="mail@mail.com"
+                                            placeholder="Country"
                                             {...field}
                                         />
                                     </FormControl>
@@ -264,7 +222,7 @@ const CheckoutForm = ({checkoutHandler=()=>{}, submit}) => {
                         <h3 className="text-sm font-medium uppercase text-primary col-span-full">
                             Payment Details
                         </h3>
-                        <div className="col-span-full">
+                        {/* <div className="col-span-full">
                         <FormField
                             control={form.control}
                             name="paymentMethod"
@@ -292,7 +250,7 @@ const CheckoutForm = ({checkoutHandler=()=>{}, submit}) => {
                                 </FormItem>
                               )}
                         />
-                        </div>
+                        </div> */}
                         <FormField
                             control={form.control}
                             name="cardName"
@@ -302,7 +260,7 @@ const CheckoutForm = ({checkoutHandler=()=>{}, submit}) => {
                                     <FormControl>
                                         <Input
                                             type="cardName"
-                                            placeholder="mail@mail.com"
+                                            placeholder=""
                                             {...field}
                                         />
                                     </FormControl>

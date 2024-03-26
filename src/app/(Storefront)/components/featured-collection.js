@@ -61,6 +61,5 @@ export const featuredCollections = [
     name: "Limited Edition",
     image:"https://xbufnzihtjlgkfljttlv.supabase.co/storage/v1/object/public/images/hero-image.png?t=2024-03-20T08%3A00%3A40.138Z"
   }
-  
 ];
 

@@ -1,43 +1,54 @@
 "use client";
 import { useCart } from "@/app/(Storefront)/cart/cart-context";
+import { useCheckout } from "@/app/(Storefront)/checkout/checkout-context";
 import StorefrontButton from "@/app/(Storefront)/components/storefront-button";
 import { formatCurrency } from "@/lib/format-currency";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export const CartSummary = () => {
+  const [message, setMessage] = useState("");
+  const CheckoutContext = useCheckout();
   const CartContext = useCart();
   if (!CartContext) return null;
   const { cart, dispatch } = CartContext;
+  if (!CheckoutContext) return null;
+  const { checkout, setCheckout, form } = CheckoutContext;
+  const router = useRouter();
 
   async function handlePayment() {
-    console.log("performing payment");
+    toast("performing payment...");
     //wait 2 seconds to simulate payment
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log("payment done");
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    toast("payment done");
   }
 
   async function validateCart() {
-    console.log("validating cart");
-    //wait 500 ms to simulate validation
+    toast("validating cart...");
     await new Promise((resolve) => setTimeout(resolve, 500));
-    console.log("cart validated");
+    toast("cart validated");
+  }
+
+  async function onSubmit(values) {
+    console.log(values);
+    toast(message);
+    await validateCart();
+    await handlePayment();
+    toast.success("Order placed successfully");
+    dispatch({ type: "CLEAR_CART" });
+    router.push("/checkout/success");
   }
 
   async function handleCheckout() {
+    form.handleSubmit(onSubmit)();
     console.log("checkout");
-    // TODO: need to await form submit and only move forward on a successful response
-    await validateCart();
-    await handlePayment();
-    dispatch({ type: "CLEAR_CART" });
-    toast.success("Order placed successfully");
-    // router.push("/checkout/success");
   }
   return (
     <div className="flex flex-col gap-3">
       <ul className="flex flex-col gap-3 pb-6">
-        {cart.lineItems.map((item) => (
+        {checkout.lineItems.map((item) => (
           <li key={item?.id} className="flex items-center justify-between">
             <div className="flex items-center gap-3 text-sm">
               <div className="relative flex items-center justify-center w-16 h-16 rounded-md aspect-square bg-muted">
@@ -70,7 +81,7 @@ export const CartSummary = () => {
         </div>
         <div>
           {formatCurrency(
-            cart.lineItems.reduce(
+            checkout.lineItems.reduce(
               (prev, current) =>
                 prev + current.product_variant.price * current.quantity,
               0
@@ -90,7 +101,7 @@ export const CartSummary = () => {
         </div>
         <div className="text-primary">
           {formatCurrency(
-            cart.lineItems.reduce(
+            checkout.lineItems.reduce(
               (prev, current) =>
                 prev + current.product_variant.price * current.quantity,
               0
@@ -99,9 +110,9 @@ export const CartSummary = () => {
         </div>
       </div>
       <StorefrontButton
-        onClick={handleCheckout}
-        type="submit"
-        form="checkout-form"
+        onClick={async () => await handleCheckout()}
+        type="button"
+        // form="checkout-form"
       >
         Continue and Pay
       </StorefrontButton>

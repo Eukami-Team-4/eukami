@@ -18,7 +18,7 @@ const CartDialog = () => {
   if (!CartContext) return null;
   const { cart, dispatch } = CartContext;
   if (!CheckoutContext) return null;
-  const { checkout, handleCheckout } = CheckoutContext;
+  const { handleCheckout } = CheckoutContext;
 
   function handleChangeQuantity(lineItem: CartItem, quantity: number) {
     lineItem.quantity = quantity;
@@ -117,13 +117,12 @@ const CartDialog = () => {
                   )}
                 </div>
               </div>
-
               <DialogTrigger asChild>
                 <StorefrontButton
                   onClick={async () => {
-                    await handleCheckout(cart);
-                    if (checkout.checkoutUrl) {
-                      router.push(checkout.checkoutUrl);
+                    const checkout = await handleCheckout(cart);
+                    if (checkout?.checkoutUrl) {
+                      router.push(`/checkout/${checkout.checkoutUrl}`);
                     }
                   }}
                 >

@@ -19,9 +19,6 @@ const StorefrontRoutes = [
     {
         name: "Contact", href: '/contact',
     },
-    {
-        name: "FAQ", href: '/faq',
-    },
 ]
 
 const MainNav = ({...props}) => {

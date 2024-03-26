@@ -49,4 +49,6 @@ export type Order = MergeDeep<
     lineItems: Array<CartItem>;
   }>
 
-
+export type Customer = MergeDeep<
+  Database["Eukami_v1"]["Tables"]["Customer"]["Row"],{}
+>;

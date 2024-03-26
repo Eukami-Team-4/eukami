@@ -1,3 +1,6 @@
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { ContactForm } from "./ContactForm";
 
 const ContactPage = () => {
@@ -5,6 +8,13 @@ const ContactPage = () => {
     <main className="flex flex-col items-center justify-center py-16">
       <h1 className="py-6 text-center uppercase">Contact us</h1>
       <ContactDetails />
+      <div className="py-2">
+        <Link href="/faq">
+          <Button variant="link">
+            Browse Frequently Asked Questions <ArrowRight size={16} className="ml-2" />
+          </Button>
+        </Link>
+      </div>
       <h2 className="py-6 text-center uppercase">Or leave a message</h2>
       <ContactForm />
     </main>
