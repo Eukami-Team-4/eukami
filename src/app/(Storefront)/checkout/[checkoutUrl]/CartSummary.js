@@ -50,7 +50,12 @@ export const CartSummary = () => {
         line1: values.address,
         postalCode: values.postalCode,
       },
-      lineItems: checkout.lineItems
+      lineItems: checkout.lineItems,
+      totalPrice: checkout.lineItems.reduce(
+        (prev, current) =>
+          prev + current.product_variant.price * current.quantity,
+        0
+      ),
     });
     toast.success("Order placed successfully");
     dispatch({ type: "CLEAR_CART" });
