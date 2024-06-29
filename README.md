@@ -16,7 +16,7 @@ GitHub: Muhtasib1
 ## Usman Ali Iqbal
 Student ID: 170220776
 
-GitHub: Usman91919
+GitHub: Usman-A-Iqbal
 
 ## Avinash Kommalapati
 Student ID: 230381001
